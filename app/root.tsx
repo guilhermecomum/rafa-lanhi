@@ -46,7 +46,7 @@ export default function App() {
       </head>
       <body className="h-full">
         <Popover>
-          <header className="flex w-full sm:flex-row flex-col px-4 sm:pt-4 sm:justify-between items-center">
+          <header className="flex w-full sm:flex-row flex-col px-4 sm:py-4 sm:justify-between items-center shadow-custom-pink">
             <div className="sm:hidden flex w-full justify-between items-center">
               <div className="flex items-center">
                 <Popover.Button>
