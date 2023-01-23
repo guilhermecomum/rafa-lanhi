@@ -52,10 +52,12 @@ export default function App() {
                 <Popover.Button>
                   <i className="fa-solid fa-bars text-pink"></i>
                 </Popover.Button>
-                <img
-                  className="sm:hidden px-4"
-                  src="./assets/logo-mobile.png"
-                />
+                <Link to="/">
+                  <img
+                    className="sm:hidden px-4"
+                    src="./assets/logo-mobile.png"
+                  />
+                </Link>
               </div>
               <div>
                 <Link to="/servicos" className="pl-8">
@@ -66,11 +68,12 @@ export default function App() {
                 </Link>
               </div>
             </div>
-            <img
-              className="hidden sm:inline-block sm:w-auto"
-              src="./assets/logo.png"
-            />
-
+            <Link to="/">
+              <img
+                className="hidden sm:inline-block sm:w-auto"
+                src="./assets/logo.png"
+              />
+            </Link>
             <nav className="uppercase hidden sm:flex justify-between items-start">
               <NavLink
                 to="/"
@@ -118,7 +121,6 @@ export default function App() {
             </Popover.Panel>
           </header>
         </Popover>
-
         <Outlet />
         <ScrollRestoration />
         <Scripts />
