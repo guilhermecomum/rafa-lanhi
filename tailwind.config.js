@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'service-green': "url('/assets/service-green.svg')",
+        'pink-flower': "url('/assets/pink-flower.svg')",
+        'white-flower': "url('/assets/white-flower.svg')",
       },
       backgroundPosition: {
         'half': '-270px 110%',

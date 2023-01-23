@@ -38,7 +38,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <section className="bg-green-50 lg:bg-service-green lg:bg-half lg:bg-no-repeat sm:grid sm:grid-cols-12 px-4 py-14">
+      <section className="bg-green-50 lg:bg-pink-flower lg:bg-half lg:bg-no-repeat sm:grid sm:grid-cols-12 px-4 py-14">
         <div className="col-span-12 text-center">
           <h2 className="text-4xl text-pink">Acupuntura</h2>
         </div>
@@ -67,6 +67,26 @@ export default function Index() {
           className="my-12 col-start-7 col-span-5"
           src="./assets/acupuntura-home.jpg"
         />
+      </section>
+      <section className="bg-pink lg:bg-white-flower bg-bottom lg:bg-no-repeat flex px-4 py-14 text-white">
+        <p className="pt-4">
+          Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat et quo
+          num tendi nada.Diuretics paradis num copo é motivis de
+          denguis.Interagi no mé, cursus quis, vehicula ac nisi.Posuere libero
+          varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.
+        </p>
+        <p className="pt-4">
+          Interessantiss quisso pudia ce receita de bolis, mais bolis eu num
+          gostis.Em pé sem cair, deitado sem dormir, sentado sem cochilar e
+          fazendo pose.Detraxit consequat et quo num tendi nada.Paisis, filhis,
+          espiritis santis.
+        </p>
+        <p className="pt-4">
+          Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo,
+          vitae iaculis nisl.Sapien in monti palavris qui num significa nadis i
+          pareci latim.Paisis, filhis, espiritis santis.Cevadis im ampola pa
+          arma uma pindureta.
+        </p>
       </section>
     </main>
   );
