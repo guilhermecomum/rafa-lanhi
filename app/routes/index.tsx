@@ -4,7 +4,7 @@ export default function Index() {
       <section className="flex flex-col sm:py-10 sm:grid sm:grid-cols-12 sm:px-4 sm:items-center">
         <div className="col-start-2 col-span-4 text-right">
           <img
-            className="object-cover sm:object-none w-full mb-4 h-56 sm:h-auto sm:w-auto sm:rounded-full"
+            className="object-cover sm:object-none w-full mb-4 h-48 sm:h-auto sm:w-auto sm:rounded-full"
             src="./assets/rafa-home.jpg"
           />
         </div>
@@ -38,11 +38,11 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <section className="bg-green-50 lg:bg-service-green lg:bg-half lg:bg-no-repeat sm:grid sm:grid-cols-12 px-4 py-8">
+      <section className="bg-green-50 lg:bg-service-green lg:bg-half lg:bg-no-repeat sm:grid sm:grid-cols-12 px-4 py-14">
         <div className="col-span-12 text-center">
           <h2 className="text-4xl text-pink">Acupuntura</h2>
         </div>
-        <div className="col-start-2 col-span-4 mt-8">
+        <div className="col-start-2 col-span-4 mt-12">
           <p className="pt-4">
             Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat et quo
             num tendi nada.Diuretics paradis num copo é motivis de
@@ -64,7 +64,7 @@ export default function Index() {
           </p>
         </div>
         <img
-          className="my-8 col-start-7 col-span-5"
+          className="my-12 col-start-7 col-span-5"
           src="./assets/acupuntura-home.jpg"
         />
       </section>
