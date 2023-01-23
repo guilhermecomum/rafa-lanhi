@@ -10,7 +10,8 @@ module.exports = {
         'white-flower': "url('/assets/white-flower.svg')",
       },
       backgroundPosition: {
-        'half': '-270px 110%',
+        'half': 'left bottom',
+        'half-center': 'center bottom',
       }
     },
     colors: {
