@@ -14,6 +14,7 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 import { Popover } from "@headlessui/react";
+import { SocialLinks } from "./ui/components/social-links";
 
 export const links: LinksFunction = () => {
   return [
@@ -46,35 +47,30 @@ export default function App() {
       </head>
       <body className="h-full">
         <Popover>
-          <header className="flex w-full sm:flex-row flex-col px-4 sm:py-4 sm:justify-between items-center shadow-custom-pink">
-            <div className="sm:hidden flex w-full justify-between items-center">
+          <header className="flex w-full lg:flex-row flex-col px-4 lg:py-4 lg:justify-between items-center shadow-custom-pink">
+            <div className="lg:hidden flex w-full justify-between items-center">
               <div className="flex items-center">
                 <Popover.Button>
                   <i className="fa-solid fa-bars text-pink"></i>
                 </Popover.Button>
                 <Link to="/">
                   <img
-                    className="sm:hidden px-4"
+                    className="lg:hidden px-4"
                     src="./assets/logo-mobile.png"
                   />
                 </Link>
               </div>
-              <div>
-                <Link to="/servicos" className="pl-8">
-                  <i className="fa-brands fa-whatsapp text-green"></i>
-                </Link>
-                <Link to="/servicos" className="pl-4">
-                  <i className="fa-brands fa-linkedin text-green"></i>
-                </Link>
+              <div className="flex space-x-2 text-xl text-green">
+                <SocialLinks />
               </div>
             </div>
             <Link to="/">
               <img
-                className="hidden sm:inline-block sm:w-auto"
+                className="hidden lg:inline-block lg:w-auto"
                 src="./assets/logo.png"
               />
             </Link>
-            <nav className="uppercase hidden sm:flex justify-between items-start">
+            <nav className="uppercase hidden lg:flex justify-between items-center lg:space-x-8">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -83,21 +79,12 @@ export default function App() {
               >
                 home
               </NavLink>
-              <Link to="/sobre" className="sm:pl-8">
-                sobre
-              </Link>
-              <Link to="/blog" className="sm:pl-8">
-                blog
-              </Link>
-              <Link to="/servicos" className="sm:pl-8">
-                serviços
-              </Link>
-              <Link to="/servicos" className="sm:pl-8 hidden sm:inline-block">
-                <i className="fa-brands fa-whatsapp text-green"></i>
-              </Link>
-              <Link to="/servicos" className="sm:pl-4 hidden sm:inline-block">
-                <i className="fa-brands fa-linkedin text-green"></i>
-              </Link>
+              <Link to="/sobre">sobre</Link>
+              <Link to="/blog">blog</Link>
+              <Link to="/servicos">serviços</Link>
+              <div className="flex space-x-2 text-xl text-green">
+                <SocialLinks />
+              </div>
             </nav>
 
             <Popover.Panel className="flex flex-col uppercase w-full">
@@ -109,19 +96,25 @@ export default function App() {
               >
                 home
               </NavLink>
-              <Link to="/sobre" className="sm:pl-8">
-                sobre
-              </Link>
-              <Link to="/blog" className="sm:pl-8">
+              <Link to="/sobre">sobre</Link>
+              <Link to="/blog" className="lg:pl-8">
                 blog
               </Link>
-              <Link to="/servicos" className="sm:pl-8">
+              <Link to="/servicos" className="lg:pl-8">
                 serviços
               </Link>
             </Popover.Panel>
           </header>
         </Popover>
         <Outlet />
+        <div className="bg-pink text-white flex flex-col lg:flex-row space-y-8 text-center lg:space-y-0 lg:text-left justify-between py-8 items-center px-8">
+          <p>
+            Rafaela Lanhi | Fisíoterapia & Acupuntura - rafaela@rafalanhi.com.br
+          </p>
+          <div className="text-2xl space-x-4">
+            <SocialLinks />
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
