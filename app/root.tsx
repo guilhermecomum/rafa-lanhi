@@ -79,10 +79,9 @@ export default function App() {
               >
                 home
               </NavLink>
-              <Link to="/sobre">sobre</Link>
               <Link to="/blog">blog</Link>
               <Link to="/servicos">serviços</Link>
-              <div className="flex space-x-2 text-xl text-green">
+              <div className="flex space-x-4 text-3xl text-green">
                 <SocialLinks />
               </div>
             </nav>
@@ -96,7 +95,6 @@ export default function App() {
               >
                 home
               </NavLink>
-              <Link to="/sobre">sobre</Link>
               <Link to="/blog" className="lg:pl-8">
                 blog
               </Link>
