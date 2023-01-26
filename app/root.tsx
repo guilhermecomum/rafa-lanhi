@@ -1,5 +1,5 @@
+import { Fragment } from "react";
 import type { LinksFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -12,7 +12,7 @@ import {
 } from "@remix-run/react";
 
 import styles from "~/styles/app.css";
-import { Popover } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { SocialLinks } from "./ui/components/social-links";
 
 export const links: LinksFunction = () => {
@@ -58,7 +58,7 @@ export default function App() {
       </head>
       <body className="flex flex-col min-h-screen">
         <Popover>
-          <header className="flex w-full lg:flex-row flex-col px-4 lg:py-4 lg:justify-between items-center shadow-custom-pink">
+          <header className="flex w-full lg:flex-row lg:h-28 flex-col px-4 py-2 lg:py-4 lg:justify-between items-center shadow-custom-pink">
             <div className="lg:hidden flex w-full justify-between items-center">
               <div className="flex items-center">
                 <Popover.Button>
@@ -67,7 +67,7 @@ export default function App() {
                 <Link to="/">
                   <img
                     className="lg:hidden px-4"
-                    src="/assets/logo-mobile.png"
+                    src="/assets/logo-mobile.svg"
                   />
                 </Link>
               </div>
@@ -77,8 +77,8 @@ export default function App() {
             </div>
             <Link to="/">
               <img
-                className="hidden lg:inline-block lg:w-auto"
-                src="/assets/logo.png"
+                className="hidden lg:inline-block lg:h-20"
+                src="/assets/logo.svg"
               />
             </Link>
             <nav className="uppercase hidden lg:flex justify-between items-center lg:space-x-8">
@@ -96,8 +96,17 @@ export default function App() {
                 <SocialLinks />
               </div>
             </nav>
-
-            <Popover.Panel className="flex flex-col uppercase w-full">
+          </header>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 translate-y-1"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 translate-y-0"
+            leaveTo="opacity-0 translate-y-1"
+          >
+            <Popover.Panel className="flex flex-col uppercase w-full px-4 py-4 space-y-2">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -113,7 +122,7 @@ export default function App() {
                 serviços
               </Link>
             </Popover.Panel>
-          </header>
+          </Transition>
         </Popover>
         <Outlet />
         <div className="mt-auto bg-pink text-white flex flex-col lg:flex-row space-y-8 text-center lg:space-y-0 lg:text-left justify-between py-8 items-center px-8">

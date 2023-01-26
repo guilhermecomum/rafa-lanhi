@@ -10,7 +10,9 @@ export default function AllPosts() {
               Rafaela Lanhi
             </Link>
             <span className="text-xl text-green font-semibold px-2">›</span>{" "}
-            blog
+            <Link className="text-pink" to="/blog">
+              blog
+            </Link>
           </div>
         </div>
         <Outlet />

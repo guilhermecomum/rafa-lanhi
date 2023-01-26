@@ -64,7 +64,7 @@ export default function Index() {
                   libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean
                   sit amet nisi.
                 </p>
-                <a className="text-right" href="">
+                <a className="text-right mt-6" href="">
                   continuar lendo
                 </a>
               </div>
