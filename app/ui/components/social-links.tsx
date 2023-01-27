@@ -1,20 +1,27 @@
-import { Link } from "@remix-run/react";
-
 function SocialLinks() {
   return (
     <>
-      <Link to="/servicos">
+      <a href="/servicos">
         <i className="fa-brands fa-whatsapp"></i>
-      </Link>
-      <Link to="/servicos">
+      </a>
+      <a
+        href="https://instagram.com/rafalanhifisio?igshid=NTA5ZTk1NTc="
+        target="_blank"
+      >
         <i className="fa-brands fa-linkedin"></i>
-      </Link>
-      <Link to="/servicos">
+      </a>
+      <a
+        href="https://www.facebook.com/profile.php?id=100088214301403&mibextid=ZbWKwL"
+        target="_blank"
+      >
         <i className="fa-brands fa-facebook"></i>
-      </Link>
-      <Link to="/servicos">
+      </a>
+      <a
+        href="https://instagram.com/rafalanhifisio?igshid=NTA5ZTk1NTc="
+        target="_blank"
+      >
         <i className="fa-brands fa-instagram"></i>
-      </Link>
+      </a>
     </>
   );
 }

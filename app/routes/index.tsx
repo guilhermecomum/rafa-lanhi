@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Disclosure, Tab } from "@headlessui/react";
-import { Link, NavLink } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 
 export default function Index() {
   const services = ["Fisioterapia", "Acupuntura & Medicina Chinesa"];
