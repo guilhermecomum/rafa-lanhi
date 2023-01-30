@@ -1,10 +1,9 @@
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { json, redirect } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
-export async function loader({ request, params }: LoaderArgs) {
-  const { slug } = params as { slug: string };
+export async function loader(args: LoaderArgs) {
+  const { slug } = args.params as { slug: string };
   return json({ slug });
 }
 
