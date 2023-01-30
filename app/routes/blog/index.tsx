@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 
-export default function BlogList() {
+export default function ServicesList() {
   return (
     <div className="space-y-8">
       {[1, 2, 3, 4, 5].map((x) => (

@@ -35,7 +35,7 @@ function Topbar() {
           </NavLink>
           <Link to="/sobre">sobre</Link>
           <Link to="/blog">blog</Link>
-          <Link to="#services">serviços</Link>
+          <Link to="/servicos">serviços</Link>
           <div className="flex space-x-4 text-3xl text-green">
             <SocialLinks />
           </div>
