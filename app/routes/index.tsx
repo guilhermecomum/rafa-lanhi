@@ -1,3 +1,4 @@
+import type { LoaderArgs } from "@remix-run/node";
 import { Fragment } from "react";
 import type { LoaderArgs } from "@remix-run/node";
 import { Disclosure, Tab } from "@headlessui/react";
@@ -42,7 +43,6 @@ export default function Index() {
             estar para as pessoas através das técnicas da medicina chinesa
             somadas a formação em fisioterapia.
           </p>
-
           <div className="text-center mb-8">
             <a
               href="http://cal.com/rafaela-lanhi"

@@ -8,31 +8,75 @@ generator client {
 }
 
 model User {
-  id    String @id @default(cuid())
-  email String @unique
-
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   password Password?
-  notes    Note[]
+  content  Content[]
 }
 
 model Password {
-  hash String
-
+  hash   String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String @unique
 }
 
-model Note {
-  id    String @id @default(cuid())
+model Content {
+  id    String  @id @default(cuid())
   title String
   body  String
+  slug  String
+  draft Boolean
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String
+  user        User                   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      String
+  categories  CategoriesOnContent[]
+  contentType ContentTypeOnContent[]
+}
+
+model Category {
+  id      String                @id @default(cuid())
+  name    String
+  content CategoriesOnContent[]
+}
+
+model ContentType {
+  id      String                 @id @default(cuid())
+  name    String
+  content ContentTypeOnContent[]
+}
+
+model CategoriesOnContent {
+  content   Content  @relation(fields: [contentId], references: [id])
+  contentId String
+  category  Category @relation(fields: [categoryId], references: [id])
+
+  categoryId String
+  assignedAt DateTime @default(now())
+
+  @@id([contentId, categoryId])
+}
+
+model ContentTypeOnContent {
+  content     Content     @relation(fields: [contentId], references: [id])
+  contentId   String
+  contentType ContentType @relation(fields: [contentTypeId], references: [id])
+
+  contentTypeId String
+  assignedAt    DateTime @default(now())
+
+  @@id([contentId, contentTypeId])
+}
+
+enum Role {
+  USER
+  EDITOR
+  ADMIN
 }

@@ -17,6 +17,8 @@ import * as gtag from "~/utils/gtags.client";
 import styles from "~/styles/app.css";
 import { SocialLinks } from "~/ui/components/social-links";
 import { Topbar } from "~/ui/components/topbar";
+import { getUser } from "./session.server";
+import { fromSuccess } from "domain-functions";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];
@@ -28,16 +30,19 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export const loader = async () => {
-  return json({ gaTrackingId: process.env.GA_TRACKING_ID });
-};
+export async function loader(args: LoaderArgs) {
+  return json({
+    user: await fromSuccess(getUser)(args.request),
+    gaTrackingId: process.env.GA_TRACKING_ID,
+  });
+}
 
 export default function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
 
   useEffect(() => {
-    if (gaTrackingId?.length) {
+    if (gaTrackingId?.length && process.env.NODE_ENV !== "development") {
       gtag.pageview(location.pathname, gaTrackingId);
     }
   }, [location, gaTrackingId]);

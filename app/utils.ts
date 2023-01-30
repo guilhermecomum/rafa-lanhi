@@ -1,7 +1,6 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
-
-import type { User } from "~/models/user.server";
+import type { User } from "@prisma/client";
 
 const DEFAULT_REDIRECT = "/";
 
@@ -45,6 +44,7 @@ export function useMatchesData(
 }
 
 function isUser(user: any): user is User {
+  console.log("p---", user);
   return user && typeof user === "object" && typeof user.email === "string";
 }
 
