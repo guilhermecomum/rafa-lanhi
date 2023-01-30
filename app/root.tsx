@@ -19,22 +19,7 @@ import { SocialLinks } from "~/ui/components/social-links";
 import { Topbar } from "~/ui/components/topbar";
 
 export const links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: styles },
-    {
-      rel: "preconnect",
-      href: "https://fonts.googleapis.com",
-    },
-    {
-      rel: "preconnect",
-      href: "https://fonts.gstatic.com",
-      crossOrigin: "true",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap",
-    },
-  ];
+  return [{ rel: "stylesheet", href: styles }];
 };
 
 export const meta: MetaFunction = () => ({
