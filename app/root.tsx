@@ -22,10 +22,6 @@ export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },
     {
-      rel: "stylesheet",
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css",
-    },
-    {
       rel: "preconnect",
       href: "https://fonts.googleapis.com",
     },
@@ -37,11 +33,6 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://kit.fontawesome.com/3f404a2f5c.css",
-      crossOrigin: "anonymous",
     },
   ];
 };
@@ -103,7 +94,7 @@ export default function App() {
             Rafaela Lanhi | Fisíoterapia & Acupuntura - rafaela@rafalanhi.com.br
           </p>
           <div className="text-2xl space-x-4">
-            <SocialLinks />
+            <SocialLinks white={true} />
           </div>
         </div>
         <ScrollRestoration />
