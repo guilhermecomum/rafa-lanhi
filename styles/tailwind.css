@@ -9,3 +9,12 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Material Symbols';
+  src: url('/assets/material-symbols-outlined.woff2') format('truetype');
+  font-weight: 1 999;
+  font-style: normal;
+  font-display: swap;
+}
+
