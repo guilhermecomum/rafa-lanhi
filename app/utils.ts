@@ -1,6 +1,13 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
+import compose from "lodash/fp/compose";
+import join from "lodash/fp/join";
+import reject from "lodash/fp/reject";
+import isBoolean from "lodash/fp/isBoolean";
+import isNil from "lodash/fp/isNil";
+import flatten from "lodash/fp/flatten";
 import type { User } from "@prisma/client";
+
 
 const DEFAULT_REDIRECT = "/";
 
@@ -69,3 +76,6 @@ export function useUser(): User {
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
 }
+
+export const cx = (...args: unknown[]) =>
+  compose(join(" "), reject(isBoolean), reject(isNil), flatten)(args);

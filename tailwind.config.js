@@ -22,9 +22,12 @@ module.exports = {
       black: "#000000",
       white: "#ffffff",
       gray: {
+        50: '#f9fafb',
+        100: '#f3f4f6',
         200: "#e5e7eb",
         400: "#9ca3af",
-        600: "#4b5563",
+        600: '#4b5563',
+        900: '#111827',
       },
       pink: {
         DEFAULT: "hsl(308, 29%, 46%)",
