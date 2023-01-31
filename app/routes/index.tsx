@@ -30,7 +30,7 @@ export default function Index() {
         <div className="lg:w-2/6 w-full p-4">
           <img
             className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
-            src="/assets/rafa-home.jpg"
+            src="/assets/rafa-home.webp"
           />
         </div>
         <div className="px-4 w-full lg:w-4/6">
@@ -106,7 +106,7 @@ export default function Index() {
                   <Disclosure.Panel className="text-gray-500">
                     <h2 className="text-4xl text-pink">{title}</h2>
                     <p className="pt-4 text-justify">{body}</p>
-                    <Link to={link} className="font-semibold">
+                    <Link to={link} className="font-semibold mt-4">
                       veja mais...
                     </Link>
 
@@ -148,7 +148,7 @@ export default function Index() {
                     <div className="col-start-2 col-span-4 mt-12">
                       <h2 className="text-4xl text-pink">{title}</h2>
                       <p className="pt-4 text-justify">{body}</p>
-                      <Link to={link} className="font-semibold">
+                      <Link to={link} className="font-semibold mt-4 block">
                         veja mais...
                       </Link>
                     </div>
