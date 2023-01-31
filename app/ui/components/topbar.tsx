@@ -2,15 +2,16 @@ import { Popover, Transition } from "@headlessui/react";
 import { Link, NavLink } from "@remix-run/react";
 import { Fragment } from "react";
 import { SocialLinks } from "~/ui/components/social-links";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 function Topbar() {
   return (
     <Popover>
-      <header className="flex w-full lg:flex-row lg:h-28 flex-col px-4 py-2 lg:py-4 lg:justify-between items-center shadow-custom-pink">
+      <header className="flex w-full lg:flex-row lg:h-28 flex-col px-2 py-2 lg:py-4 lg:justify-between items-center shadow-custom-pink">
         <div className="lg:hidden flex w-full justify-between items-center">
           <div className="flex items-center">
             <Popover.Button>
-              <i className="fa-solid fa-bars text-pink"></i>
+              <Bars3Icon className="h-6 w-6 text-pink" />
             </Popover.Button>
             <Link to="/">
               <img className="lg:hidden px-4" src="/assets/logo-mobile.svg" />
@@ -33,9 +34,27 @@ function Topbar() {
           >
             home
           </NavLink>
-          <Link to="/sobre">sobre</Link>
-          <Link to="/blog">blog</Link>
-          <Link to="/servicos">serviços</Link>
+          <NavLink
+            prefetch="intent"
+            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
+            to="/sobre"
+          >
+            sobre
+          </NavLink>
+          <NavLink
+            prefetch="intent"
+            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
+            to="/blog"
+          >
+            blog
+          </NavLink>
+          <NavLink
+            prefetch="intent"
+            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
+            to="/servicos"
+          >
+            serviços
+          </NavLink>
           <div className="flex space-x-4 text-3xl text-green">
             <SocialLinks />
           </div>
@@ -51,18 +70,46 @@ function Topbar() {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="flex flex-col uppercase w-full px-4 py-4 space-y-2">
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
-          >
-            home
-          </NavLink>
-          <Link to="#blog" className="lg:pl-8">
-            blog
-          </Link>
-          <Link to="#services" className="lg:pl-8">
-            serviços
-          </Link>
+          {({ close }) => (
+            <>
+              <NavLink
+                to="/"
+                onClick={() => close()}
+                className={({ isActive }) =>
+                  isActive ? "text-pink" : undefined
+                }
+              >
+                home
+              </NavLink>
+              <NavLink
+                onClick={() => close()}
+                className={({ isActive }) =>
+                  isActive ? "text-pink" : undefined
+                }
+                to="/sobre"
+              >
+                sobre
+              </NavLink>
+              <NavLink
+                onClick={() => close()}
+                className={({ isActive }) =>
+                  isActive ? "text-pink" : undefined
+                }
+                to="/blog"
+              >
+                blog
+              </NavLink>
+              <NavLink
+                onClick={() => close()}
+                className={({ isActive }) =>
+                  isActive ? "text-pink" : undefined
+                }
+                to="/servicos"
+              >
+                serviços
+              </NavLink>
+            </>
+          )}
         </Popover.Panel>
       </Transition>
     </Popover>
