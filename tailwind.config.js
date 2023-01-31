@@ -44,6 +44,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
+      icon: ["Material Symbols"]
     },
   },
   plugins: [],
