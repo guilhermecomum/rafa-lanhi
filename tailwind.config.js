@@ -1,19 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   theme: {
     extend: {
       backgroundImage: {
-        'pink-flower': "url('/assets/pink-flower.svg')",
-        'white-flower': "url('/assets/white-flower.svg')",
+        "pink-flower": "url('/assets/pink-flower.svg')",
+        "white-flower": "url('/assets/white-flower.svg')",
       },
       backgroundPosition: {
-        'half': 'left bottom',
-        'half-center': 'center bottom',
-      }
+        half: "left bottom",
+        "half-center": "center bottom",
+      },
     },
     colors: {
       transparent: "transparent",
@@ -23,7 +24,7 @@ module.exports = {
       gray: {
         200: "#e5e7eb",
         400: "#9ca3af",
-        600: '#4b5563',
+        600: "#4b5563",
       },
       pink: {
         DEFAULT: "hsl(308, 29%, 46%)",
@@ -43,5 +44,11 @@ module.exports = {
       sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addBase }) {
+      addBase({
+        html: { fontSize: "20px" },
+      });
+    }),
+  ],
 };

@@ -27,17 +27,17 @@ export default function Index() {
   return (
     <main className="relative lg:flex lg:items-center lg:justify-center flex flex-col">
       <section className="flex flex-col lg:flex-row lg:w-8/12 lg:py-10 lg:px-4 lg:items-center lg:justify-between lg:space-x-10">
-        <div className="w-2/6">
+        <div className="lg:w-2/6 w-full p-4">
           <img
-            className="object-contain w-full mb-4 lg:rounded-l-3xl lg:rounded-tr-3xl"
+            className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
             src="/assets/rafa-home.jpg"
           />
         </div>
-        <div className="px-4 w-4/6">
-          <h2 className="text-2xl lg:text-3xl text-center font-semibold text-pink mb-4">
+        <div className="px-4 w-full lg:w-4/6">
+          <h2 className="text-2xl lg:text-4xl text-center font-semibold text-pink mb-4">
             Fisioterapia & Acupuntura
           </h2>
-          <p className="pt-4 text-center">
+          <p className="pt-4 text-center text-xl">
             Olá, sou <b>Rafaela Lanhi</b> e minha maior satisfação é trazer bem
             estar para as pessoas através das técnicas da medicina chinesa
             somadas a formação em fisioterapia.
