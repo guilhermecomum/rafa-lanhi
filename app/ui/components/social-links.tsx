@@ -12,11 +12,13 @@ function SocialLinks({ white }: SocialLinkProps) {
         {white ? (
           <img
             className="w-5 h-5 fill-green"
+            alt="icone whatsapp"
             src="/assets/icons/whatsapp-white.svg"
           />
         ) : (
           <img
             className="w-5 h-5 fill-green"
+            alt="icone whatsapp"
             src="/assets/icons/whatsapp.svg"
           />
         )}
@@ -27,9 +29,17 @@ function SocialLinks({ white }: SocialLinkProps) {
         target="_blank"
       >
         {white ? (
-          <img className="w-5 h-5" src="/assets/icons/instagram-white.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone instagram"
+            src="/assets/icons/instagram-white.svg"
+          />
         ) : (
-          <img className="w-5 h-5" src="/assets/icons/instagram.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone instagram"
+            src="/assets/icons/instagram.svg"
+          />
         )}
       </a>
       <a
@@ -38,16 +48,32 @@ function SocialLinks({ white }: SocialLinkProps) {
         target="_blank"
       >
         {white ? (
-          <img className="w-5 h-5" src="/assets/icons/facebook-white.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone facebook"
+            src="/assets/icons/facebook-white.svg"
+          />
         ) : (
-          <img className="w-5 h-5" src="/assets/icons/facebook.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone facebook"
+            src="/assets/icons/facebook.svg"
+          />
         )}
       </a>
       <a className="inline-block" href="" target="_blank">
         {white ? (
-          <img className="w-5 h-5" src="/assets/icons/linkedin-white.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone linkedin"
+            src="/assets/icons/linkedin-white.svg"
+          />
         ) : (
-          <img className="w-5 h-5" src="/assets/icons/linkedin.svg" />
+          <img
+            className="w-5 h-5"
+            alt="icone linkedin"
+            src="/assets/icons/linkedin.svg"
+          />
         )}
       </a>
     </div>
