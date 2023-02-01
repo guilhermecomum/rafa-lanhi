@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, Ref, PropsWithChildren } from "react";
+import { useCallback, useMemo } from "react";
 import isHotkey from "is-hotkey";
 import { Slate, Editable, withReact, useSlate } from "slate-react";
 import {
@@ -12,6 +12,7 @@ import {
 import { withHistory } from "slate-history";
 import { match } from "ts-pattern";
 import { cx } from "~/utils";
+import { Icon, Button } from "./editor/components";
 
 type TitleElement = { type: "title"; children: Descendant[] };
 
@@ -117,79 +118,6 @@ const isMarkActive = (editor, format) => {
   return marks ? marks[format] === true : false;
 };
 
-interface BaseProps {
-  className: string;
-  [key: string]: unknown;
-}
-type OrNull<T> = T | null;
-// export const Button = React.forwardRef(
-//   (
-//     {
-//       className,
-//       active,
-//       reversed,
-//       ...props
-//     }: PropsWithChildren<
-//       {
-//         active: boolean;
-//         reversed: boolean;
-//       } & BaseProps
-//     >,
-//     ref: Ref<OrNull<HTMLSpanElement>>
-//   ) => (
-//     <button
-//       {...props}
-//       ref={ref}
-//       className={cx(
-//         className,
-//         `cursor-pointer ${
-//           reversed
-//             ? active
-//               ? "bg-white"
-//               : "bg-black"
-//             : active
-//             ? "bg-gray-400"
-//             : "bg-gray"
-//         }`
-//       )}
-//     />
-//   )
-// );
-
-export const Button = React.forwardRef(
-  (
-    {
-      className,
-      active,
-      reversed,
-      ...props
-    }: PropsWithChildren<
-      {
-        active: boolean;
-        reversed: boolean;
-      } & BaseProps
-    >,
-    ref: Ref<OrNull<HTMLSpanElement>>
-  ) => (
-    <span
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        `cursor-pointer flex justify-center items-center ${
-          reversed
-            ? active
-              ? "text-white"
-              : "text-black"
-            : active
-            ? "text-gray"
-            : "text-gray-400"
-        }`
-      )}
-    />
-  )
-);
-
 const isBlockActive = (editor, format, blockType = "type") => {
   const { selection } = editor;
   if (!selection) return false;
@@ -251,19 +179,6 @@ const toggleBlock = (editor, format) => {
   }
 };
 
-export const Icon = React.forwardRef(
-  (
-    { className, ...props }: PropsWithChildren<BaseProps>,
-    ref: Ref<OrNull<HTMLSpanElement>>
-  ) => (
-    <span
-      {...props}
-      ref={ref}
-      className={cx("font-icon text-2xl material-symbols-outlined", className)}
-    />
-  )
-);
-
 const BlockButton = ({ format, icon }) => {
   const editor = useSlate();
   return (
@@ -296,6 +211,26 @@ const MarkButton = ({ format, icon }) => {
       <Icon>{icon}</Icon>
     </Button>
   );
+};
+
+const Leaf = ({ attributes, children, leaf }) => {
+  if (leaf.bold) {
+    children = <span className="font-bold">{children}</span>;
+  }
+
+  if (leaf.italic) {
+    children = <span className="italic">{children}</span>;
+  }
+
+  if (leaf.underline) {
+    children = <span className="underline">{children}</span>;
+  }
+
+  if (leaf.lineThrough) {
+    children = <span className="line-through">{children}</span>;
+  }
+
+  return <span {...attributes}>{children}</span>;
 };
 
 function EditInPlace({ initialValue }) {
@@ -336,24 +271,5 @@ function EditInPlace({ initialValue }) {
     </Slate>
   );
 }
-const Leaf = ({ attributes, children, leaf }) => {
-  if (leaf.bold) {
-    children = <span className="font-bold">{children}</span>;
-  }
-
-  if (leaf.italic) {
-    children = <span className="italic">{children}</span>;
-  }
-
-  if (leaf.underline) {
-    children = <span className="underline">{children}</span>;
-  }
-
-  if (leaf.lineThrough) {
-    children = <span className="line-through">{children}</span>;
-  }
-
-  return <span {...attributes}>{children}</span>;
-};
 
 export { EditInPlace };
