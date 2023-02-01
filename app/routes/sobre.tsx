@@ -3,7 +3,7 @@ import { EditInPlace } from "~/ui/components/EditInPlace";
 export default function Sobre() {
   const initialValue = [
     {
-      type: "title",
+      type: "heading-one",
       children: [{ text: "Título" }],
     },
     {

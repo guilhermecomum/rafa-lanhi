@@ -30,62 +30,6 @@ const HOTKEYS = {
 const TEXT_ALIGN_TYPES = ["left", "center", "right", "justify"];
 const LIST_TYPES = ["numbered-list", "bulleted-list"];
 
-const withLayout = (editor) => {
-  const { normalizeNode } = editor;
-
-  editor.normalizeNode = ([node, path]) => {
-    if (path.length === 0) {
-      if (editor.children.length <= 1 && Editor.string(editor, [0, 0]) === "") {
-        const title: TitleElement = {
-          type: "title",
-          children: [{ text: "Untitled" }],
-        };
-        Transforms.insertNodes(editor, title, {
-          at: path.concat(0),
-          select: true,
-        });
-      }
-
-      if (editor.children.length < 2) {
-        const paragraph: ParagraphElement = {
-          type: "paragraph",
-          children: [{ text: "" }],
-        };
-        Transforms.insertNodes(editor, paragraph, { at: path.concat(1) });
-      }
-
-      for (const [child, childPath] of Node.children(editor, path)) {
-        let type: string;
-        const slateIndex = childPath[0];
-        const enforceType = (type) => {
-          if (SlateElement.isElement(child) && child.type !== type) {
-            const newProperties: Partial<SlateElement> = { type };
-            Transforms.setNodes<SlateElement>(editor, newProperties, {
-              at: childPath,
-            });
-          }
-        };
-
-        switch (slateIndex) {
-          case 0:
-            type = "title";
-            enforceType(type);
-            break;
-          case 1:
-            type = "paragraph";
-            enforceType(type);
-          default:
-            break;
-        }
-      }
-    }
-
-    return normalizeNode([node, path]);
-  };
-
-  return editor;
-};
-
 const Element = ({ attributes, children, element }) => {
   const textAlign = match(element.align)
     .with("center", () => "text-center")
@@ -95,16 +39,52 @@ const Element = ({ attributes, children, element }) => {
     .otherwise(() => "");
 
   switch (element.type) {
-    case "title":
+    case "heading-one":
+      return (
+        <h1
+          className={cx(textAlign, "font-semibold text-pink text-4xl")}
+          {...attributes}
+        >
+          {children}
+        </h1>
+      );
+    case "heading-two":
       return (
         <h2
-          className="font-semibold text-pink text-center text-4xl"
+          className={cx(textAlign, "font-semibold text-pink text-3xl")}
           {...attributes}
         >
           {children}
         </h2>
       );
+    case "heading-three":
+      return (
+        <h3
+          className={cx(textAlign, "font-semibold text-pink text-2xl")}
+          {...attributes}
+        >
+          {children}
+        </h3>
+      );
     case "paragraph":
+      return (
+        <p className={cx("pt-4", textAlign)} {...attributes}>
+          {children}
+        </p>
+      );
+    case "list-item":
+      return (
+        <li className={cx("list-disc", textAlign)} {...attributes}>
+          {children}
+        </li>
+      );
+    case "numbered-list":
+      return (
+        <ol className={cx("list-decimal", textAlign)} {...attributes}>
+          {children}
+        </ol>
+      );
+    default:
       return (
         <p className={cx("pt-4", textAlign)} {...attributes}>
           {children}
@@ -236,10 +216,7 @@ const Leaf = ({ attributes, children, leaf }) => {
 function EditInPlace({ initialValue }) {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
-  const editor = useMemo(
-    () => withLayout(withHistory(withReact(createEditor()))),
-    []
-  );
+  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
   return (
     <Slate editor={editor} value={initialValue}>
       <div className="bg-gray-100  w-full mb-6 flex space-x-3 pl-4 items-center jusitfy-center pt-1 border-b-2">
@@ -247,10 +224,15 @@ function EditInPlace({ initialValue }) {
         <MarkButton format="italic" icon="format_italic" />
         <MarkButton format="underline" icon="format_underlined" />
         <MarkButton format="lineThrough" icon="format_strikethrough" />
+        <BlockButton format="heading-one" icon="format_h1" />
+        <BlockButton format="heading-two" icon="format_h2" />
+        <BlockButton format="heading-three" icon="format_h3" />
         <BlockButton format="left" icon="format_align_left" />
         <BlockButton format="center" icon="format_align_center" />
         <BlockButton format="right" icon="format_align_right" />
         <BlockButton format="justify" icon="format_align_justify" />
+        <BlockButton format="numbered-list" icon="format_list_numbered" />
+        <BlockButton format="bulleted-list" icon="format_list_bulleted" />
       </div>
       <Editable
         renderElement={renderElement}
