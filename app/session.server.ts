@@ -3,6 +3,7 @@ import invariant from "tiny-invariant";
 
 import type { User } from "@prisma/client";
 import { getUserById } from "./domains/user.server";
+import { fromSuccess } from "domain-functions";
 
 invariant(process.env.SESSION_SECRET, "SESSION_SECRET must be set");
 
@@ -34,9 +35,11 @@ export async function getUserId(
 
 export async function getUser(request: Request) {
   const userId = await getUserId(request);
+
   if (userId === undefined) return null;
 
-  const user = await getUserById(userId);
+  const user = await fromSuccess(getUserById)({ id: userId });
+
   if (user) return user;
 
   throw await logout(request);
