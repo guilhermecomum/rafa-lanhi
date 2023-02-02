@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import isHotkey from "is-hotkey";
 import { Slate, Editable, withReact, useSlate } from "slate-react";
 import {
@@ -13,6 +13,7 @@ import { withHistory } from "slate-history";
 import { match } from "ts-pattern";
 import { cx } from "~/utils";
 import { Icon, Button } from "./editor/components";
+import { useFetcher } from "@remix-run/react";
 
 type TitleElement = { type: "title"; children: Descendant[] };
 
@@ -72,15 +73,21 @@ const Element = ({ attributes, children, element }) => {
           {children}
         </p>
       );
+    case "bulleted-list":
+      return (
+        <ul className={cx("pl-7 list-disc", textAlign)} {...attributes}>
+          {children}
+        </ul>
+      );
     case "list-item":
       return (
-        <li className={cx("list-disc", textAlign)} {...attributes}>
+        <li className={cx(textAlign)} {...attributes}>
           {children}
         </li>
       );
     case "numbered-list":
       return (
-        <ol className={cx("list-decimal", textAlign)} {...attributes}>
+        <ol className={cx("pl-7 list-decimal", textAlign)} {...attributes}>
           {children}
         </ol>
       );
@@ -213,31 +220,66 @@ const Leaf = ({ attributes, children, leaf }) => {
   return <span {...attributes}>{children}</span>;
 };
 
-function EditInPlace({ initialValue }) {
+function EditInPlace({ content, name, readOnly = true, placeholder }) {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+  const fetcher = useFetcher();
+  const ref = useRef();
+
+  const empty = [
+    {
+      type: "paragraph",
+      children: [{ text: "" }],
+    },
+  ];
+  const initialValue = Object.keys(content).length > 0 ? content : empty;
+
   return (
-    <Slate editor={editor} value={initialValue}>
-      <div className="bg-gray-100  w-full mb-6 flex space-x-3 pl-4 items-center jusitfy-center pt-1 border-b-2">
-        <MarkButton format="bold" icon="format_bold" />
-        <MarkButton format="italic" icon="format_italic" />
-        <MarkButton format="underline" icon="format_underlined" />
-        <MarkButton format="lineThrough" icon="format_strikethrough" />
-        <BlockButton format="heading-one" icon="format_h1" />
-        <BlockButton format="heading-two" icon="format_h2" />
-        <BlockButton format="heading-three" icon="format_h3" />
-        <BlockButton format="left" icon="format_align_left" />
-        <BlockButton format="center" icon="format_align_center" />
-        <BlockButton format="right" icon="format_align_right" />
-        <BlockButton format="justify" icon="format_align_justify" />
-        <BlockButton format="numbered-list" icon="format_list_numbered" />
-        <BlockButton format="bulleted-list" icon="format_list_bulleted" />
-      </div>
+    <Slate
+      editor={editor}
+      value={initialValue || empty}
+      onChange={async (value) => {
+        const isAstChange = editor.operations.some(
+          (op) => "set_selection" !== op.type
+        );
+        if (isAstChange) {
+          // Save the value to Local Storage.
+          const data = JSON.stringify({ name, value });
+
+          fetcher.submit(
+            { data },
+            { method: "post", action: "/cms/save-content" }
+          );
+          console.log(fetcher.data);
+        }
+      }}
+    >
+      {!readOnly && (
+        <div className="bg-gray-100  w-full mb-6 flex space-x-3 pl-4 items-center jusitfy-center pt-1 border-b-2">
+          <MarkButton format="bold" icon="format_bold" />
+          <MarkButton format="italic" icon="format_italic" />
+          <MarkButton format="underline" icon="format_underlined" />
+          <MarkButton format="lineThrough" icon="format_strikethrough" />
+          <BlockButton format="heading-one" icon="format_h1" />
+          <BlockButton format="heading-two" icon="format_h2" />
+          <BlockButton format="heading-three" icon="format_h3" />
+          <BlockButton format="left" icon="format_align_left" />
+          <BlockButton format="center" icon="format_align_center" />
+          <BlockButton format="right" icon="format_align_right" />
+          <BlockButton format="justify" icon="format_align_justify" />
+          <BlockButton format="numbered-list" icon="format_list_numbered" />
+          <BlockButton format="bulleted-list" icon="format_list_bulleted" />
+          <div>
+            {fetcher.state === "submitting" ? "salvando..." : "last saved.."}
+          </div>
+        </div>
+      )}
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder="Enter a title…"
+        placeholder={placeholder}
+        readOnly={readOnly}
         onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
             if (isHotkey(hotkey, event as any)) {

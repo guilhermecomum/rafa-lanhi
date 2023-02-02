@@ -580,16 +580,24 @@ html {
   margin-top: 2.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-12 {
   margin-top: 3rem;
 }
 
-.mr-10 {
-  margin-right: 2.5rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mr-10 {
+  margin-right: 2.5rem;
 }
 
 .mb-6 {
@@ -620,6 +628,10 @@ html {
   height: 100%;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -632,6 +644,10 @@ html {
   min-height: 100vh;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -640,12 +656,20 @@ html {
   width: 83.333333%;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
 .w-5 {
   width: 1.25rem;
 }
 
 .w-6 {
   width: 1.5rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .translate-y-1 {
@@ -724,6 +748,12 @@ html {
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
@@ -752,6 +782,14 @@ html {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-b-2 {
@@ -830,6 +868,11 @@ html {
   padding-bottom: 2.5rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -843,12 +886,16 @@ html {
   padding-top: 4rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.pl-7 {
+  padding-left: 1.75rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-left {
@@ -895,6 +942,11 @@ html {
   line-height: 2.5rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -907,6 +959,10 @@ html {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .font-bold {
@@ -944,6 +1000,11 @@ html {
 .text-green-500 {
   --tw-text-opacity: 1;
   color: hsl(118 15% 40% / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .text-gray-600 {

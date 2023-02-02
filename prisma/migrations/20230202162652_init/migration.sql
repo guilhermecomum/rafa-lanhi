@@ -22,13 +22,17 @@ CREATE TABLE "Password" (
 -- CreateTable
 CREATE TABLE "Content" (
     "id" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
-    "body" TEXT NOT NULL,
-    "slug" TEXT NOT NULL,
-    "draft" BOOLEAN NOT NULL,
+    "title" TEXT,
+    "body" JSONB NOT NULL,
+    "slug" TEXT,
+    "name" TEXT,
+    "conver" TEXT,
+    "summary" TEXT,
+    "draft" BOOLEAN NOT NULL DEFAULT false,
+    "link" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
 
     CONSTRAINT "Content_pkey" PRIMARY KEY ("id")
 );
@@ -42,14 +46,6 @@ CREATE TABLE "Category" (
 );
 
 -- CreateTable
-CREATE TABLE "ContentType" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-
-    CONSTRAINT "ContentType_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "CategoriesOnContent" (
     "contentId" TEXT NOT NULL,
     "categoryId" TEXT NOT NULL,
@@ -58,20 +54,17 @@ CREATE TABLE "CategoriesOnContent" (
     CONSTRAINT "CategoriesOnContent_pkey" PRIMARY KEY ("contentId","categoryId")
 );
 
--- CreateTable
-CREATE TABLE "ContentTypeOnContent" (
-    "contentId" TEXT NOT NULL,
-    "contentTypeId" TEXT NOT NULL,
-    "assignedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "ContentTypeOnContent_pkey" PRIMARY KEY ("contentId","contentTypeId")
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Password_userId_key" ON "Password"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Content_slug_key" ON "Content"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Content_name_key" ON "Content"("name");
 
 -- AddForeignKey
 ALTER TABLE "Password" ADD CONSTRAINT "Password_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -84,9 +77,3 @@ ALTER TABLE "CategoriesOnContent" ADD CONSTRAINT "CategoriesOnContent_contentId_
 
 -- AddForeignKey
 ALTER TABLE "CategoriesOnContent" ADD CONSTRAINT "CategoriesOnContent_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ContentTypeOnContent" ADD CONSTRAINT "ContentTypeOnContent_contentId_fkey" FOREIGN KEY ("contentId") REFERENCES "Content"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ContentTypeOnContent" ADD CONSTRAINT "ContentTypeOnContent_contentTypeId_fkey" FOREIGN KEY ("contentTypeId") REFERENCES "ContentType"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
