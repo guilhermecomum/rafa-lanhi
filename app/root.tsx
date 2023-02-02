@@ -32,14 +32,14 @@ export const meta: MetaFunction = () => ({
 
 export async function loader(args: LoaderArgs) {
   return json({
-    user: await fromSuccess(getUser)(args.request),
+    user: await getUser(args.request),
     gaTrackingId: process.env.GA_TRACKING_ID,
   });
 }
 
 export default function App() {
   const location = useLocation();
-  const { gaTrackingId } = useLoaderData<typeof loader>();
+  const { gaTrackingId, user } = useLoaderData<typeof loader>();
 
   useEffect(() => {
     if (gaTrackingId?.length && process.env.NODE_ENV !== "development") {

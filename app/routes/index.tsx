@@ -1,6 +1,5 @@
 import type { LoaderArgs } from "@remix-run/node";
 import { Fragment } from "react";
-import type { LoaderArgs } from "@remix-run/node";
 import { Disclosure, Tab } from "@headlessui/react";
 import { Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
