@@ -20,6 +20,7 @@ type TitleElement = { type: "title"; children: Descendant[] };
 type ParagraphElement = {
   type: "paragraph";
   align?: string;
+  indent: boolean;
   children: Descendant[];
 };
 
@@ -39,11 +40,13 @@ const Element = ({ attributes, children, element }) => {
     .with("justify", () => "text-justify")
     .otherwise(() => "");
 
+  const indent = element.indent ? "indent-6" : "";
+
   switch (element.type) {
     case "heading-one":
       return (
         <h1
-          className={cx(textAlign, "font-semibold text-pink text-4xl")}
+          className={cx(textAlign, indent, "font-semibold text-pink text-4xl")}
           {...attributes}
         >
           {children}
@@ -52,7 +55,7 @@ const Element = ({ attributes, children, element }) => {
     case "heading-two":
       return (
         <h2
-          className={cx(textAlign, "font-semibold text-pink text-3xl")}
+          className={cx(textAlign, indent, "font-semibold text-pink text-3xl")}
           {...attributes}
         >
           {children}
@@ -61,7 +64,7 @@ const Element = ({ attributes, children, element }) => {
     case "heading-three":
       return (
         <h3
-          className={cx(textAlign, "font-semibold text-pink text-2xl")}
+          className={cx(textAlign, indent, "font-semibold text-pink text-2xl")}
           {...attributes}
         >
           {children}
@@ -69,7 +72,7 @@ const Element = ({ attributes, children, element }) => {
       );
     case "paragraph":
       return (
-        <p className={cx("pt-4", textAlign)} {...attributes}>
+        <p className={cx("pt-4", textAlign, indent)} {...attributes}>
           {children}
         </p>
       );
@@ -93,7 +96,7 @@ const Element = ({ attributes, children, element }) => {
       );
     default:
       return (
-        <p className={cx("pt-4", textAlign)} {...attributes}>
+        <p className={cx("pt-4", textAlign, indent)} {...attributes}>
           {children}
         </p>
       );
@@ -118,7 +121,20 @@ const isBlockActive = (editor, format, blockType = "type") => {
         n[blockType] === format,
     })
   );
+  return !!match;
+};
 
+const isIndentActive = (editor) => {
+  const { selection } = editor;
+  if (!selection) return false;
+
+  const [match] = Array.from(
+    Editor.nodes(editor, {
+      at: Editor.unhangRange(editor, selection),
+      match: (n) =>
+        !Editor.isEditor(n) && SlateElement.isElement(n) && n["indent"],
+    })
+  );
   return !!match;
 };
 
@@ -130,6 +146,21 @@ const toggleMark = (editor, format) => {
   } else {
     Editor.addMark(editor, format, true);
   }
+};
+
+const toggleIndent = (editor) => {
+  const isActive = isIndentActive(editor);
+
+  Transforms.unwrapNodes(editor, {
+    match: (n) =>
+      !Editor.isEditor(n) && SlateElement.isElement(n) && n["indent"],
+    split: true,
+  });
+  let newProperties: Partial<SlateElement>;
+  newProperties = {
+    indent: isActive ? false : true,
+  };
+  Transforms.setNodes<SlateElement>(editor, newProperties);
 };
 
 const toggleBlock = (editor, format) => {
@@ -178,6 +209,21 @@ const BlockButton = ({ format, icon }) => {
       onMouseDown={(event) => {
         event.preventDefault();
         toggleBlock(editor, format);
+      }}
+    >
+      <Icon>{icon}</Icon>
+    </Button>
+  );
+};
+
+const IndentButton = ({ icon }) => {
+  const editor = useSlate();
+  return (
+    <Button
+      active={isIndentActive(editor)}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        toggleIndent(editor);
       }}
     >
       <Icon>{icon}</Icon>
@@ -261,6 +307,7 @@ function EditInPlace({ content, name, readOnly = true, placeholder }) {
           <MarkButton format="italic" icon="format_italic" />
           <MarkButton format="underline" icon="format_underlined" />
           <MarkButton format="lineThrough" icon="format_strikethrough" />
+          <IndentButton icon="format_indent_increase" />
           <BlockButton format="heading-one" icon="format_h1" />
           <BlockButton format="heading-two" icon="format_h2" />
           <BlockButton format="heading-three" icon="format_h3" />
