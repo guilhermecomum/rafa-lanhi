@@ -1,36 +1,23 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import isHotkey from "is-hotkey";
 import { Slate, Editable, withReact, useSlate } from "slate-react";
-import {
-  Transforms,
-  createEditor,
-  Node,
-  Element as SlateElement,
-  Descendant,
-  Editor,
-} from "slate";
+import { createEditor } from "slate";
 import { withHistory } from "slate-history";
 import { match } from "ts-pattern";
 import { cx } from "~/utils";
-import { Icon, Button } from "./editor/components";
+import {
+  MarkButton,
+  BlockButton,
+  IndentButton,
+  Leaf,
+} from "./editor/components";
 import { useFetcher } from "@remix-run/react";
-
-type TitleElement = { type: "title"; children: Descendant[] };
-
-type ParagraphElement = {
-  type: "paragraph";
-  align?: string;
-  indent: boolean;
-  children: Descendant[];
-};
 
 const HOTKEYS = {
   "mod+b": "bold",
   "mod+i": "italic",
   "mod+u": "underline",
 };
-const TEXT_ALIGN_TYPES = ["left", "center", "right", "justify"];
-const LIST_TYPES = ["numbered-list", "bulleted-list"];
 
 const Element = ({ attributes, children, element }) => {
   const textAlign = match(element.align)
@@ -103,173 +90,10 @@ const Element = ({ attributes, children, element }) => {
   }
 };
 
-const isMarkActive = (editor, format) => {
-  const marks = Editor.marks(editor);
-  return marks ? marks[format] === true : false;
-};
-
-const isBlockActive = (editor, format, blockType = "type") => {
-  const { selection } = editor;
-  if (!selection) return false;
-
-  const [match] = Array.from(
-    Editor.nodes(editor, {
-      at: Editor.unhangRange(editor, selection),
-      match: (n) =>
-        !Editor.isEditor(n) &&
-        SlateElement.isElement(n) &&
-        n[blockType] === format,
-    })
-  );
-  return !!match;
-};
-
-const isIndentActive = (editor) => {
-  const { selection } = editor;
-  if (!selection) return false;
-
-  const [match] = Array.from(
-    Editor.nodes(editor, {
-      at: Editor.unhangRange(editor, selection),
-      match: (n) =>
-        !Editor.isEditor(n) && SlateElement.isElement(n) && n["indent"],
-    })
-  );
-  return !!match;
-};
-
-const toggleMark = (editor, format) => {
-  const isActive = isMarkActive(editor, format);
-
-  if (isActive) {
-    Editor.removeMark(editor, format);
-  } else {
-    Editor.addMark(editor, format, true);
-  }
-};
-
-const toggleIndent = (editor) => {
-  const isActive = isIndentActive(editor);
-
-  Transforms.unwrapNodes(editor, {
-    match: (n) =>
-      !Editor.isEditor(n) && SlateElement.isElement(n) && n["indent"],
-    split: true,
-  });
-  let newProperties: Partial<SlateElement>;
-  newProperties = {
-    indent: isActive ? false : true,
-  };
-  Transforms.setNodes<SlateElement>(editor, newProperties);
-};
-
-const toggleBlock = (editor, format) => {
-  const isActive = isBlockActive(
-    editor,
-    format,
-    TEXT_ALIGN_TYPES.includes(format) ? "align" : "type"
-  );
-  const isList = LIST_TYPES.includes(format);
-
-  Transforms.unwrapNodes(editor, {
-    match: (n) =>
-      !Editor.isEditor(n) &&
-      SlateElement.isElement(n) &&
-      LIST_TYPES.includes(n.type) &&
-      !TEXT_ALIGN_TYPES.includes(format),
-    split: true,
-  });
-  let newProperties: Partial<SlateElement>;
-  if (TEXT_ALIGN_TYPES.includes(format)) {
-    newProperties = {
-      align: isActive ? undefined : format,
-    };
-  } else {
-    newProperties = {
-      type: isActive ? "paragraph" : isList ? "list-item" : format,
-    };
-  }
-  Transforms.setNodes<SlateElement>(editor, newProperties);
-
-  if (!isActive && isList) {
-    const block = { type: format, children: [] };
-    Transforms.wrapNodes(editor, block);
-  }
-};
-
-const BlockButton = ({ format, icon }) => {
-  const editor = useSlate();
-  return (
-    <Button
-      active={isBlockActive(
-        editor,
-        format,
-        TEXT_ALIGN_TYPES.includes(format) ? "align" : "type"
-      )}
-      onMouseDown={(event) => {
-        event.preventDefault();
-        toggleBlock(editor, format);
-      }}
-    >
-      <Icon>{icon}</Icon>
-    </Button>
-  );
-};
-
-const IndentButton = ({ icon }) => {
-  const editor = useSlate();
-  return (
-    <Button
-      active={isIndentActive(editor)}
-      onMouseDown={(event) => {
-        event.preventDefault();
-        toggleIndent(editor);
-      }}
-    >
-      <Icon>{icon}</Icon>
-    </Button>
-  );
-};
-
-const MarkButton = ({ format, icon }) => {
-  const editor = useSlate();
-  return (
-    <Button
-      active={isMarkActive(editor, format)}
-      onMouseDown={(event) => {
-        event.preventDefault();
-        toggleMark(editor, format);
-      }}
-    >
-      <Icon>{icon}</Icon>
-    </Button>
-  );
-};
-
-const Leaf = ({ attributes, children, leaf }) => {
-  if (leaf.bold) {
-    children = <span className="font-bold">{children}</span>;
-  }
-
-  if (leaf.italic) {
-    children = <span className="italic">{children}</span>;
-  }
-
-  if (leaf.underline) {
-    children = <span className="underline">{children}</span>;
-  }
-
-  if (leaf.lineThrough) {
-    children = <span className="line-through">{children}</span>;
-  }
-
-  return <span {...attributes}>{children}</span>;
-};
-
 function EditInPlace({ content, name, readOnly = true, placeholder }) {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+  const [editor] = useState(() => withHistory(withReact(createEditor())));
   const fetcher = useFetcher();
   const ref = useRef();
 
@@ -292,7 +116,6 @@ function EditInPlace({ content, name, readOnly = true, placeholder }) {
         if (isAstChange) {
           // Save the value to Local Storage.
           const data = JSON.stringify({ name, value });
-
           fetcher.submit(
             { data },
             { method: "post", action: "/cms/save-content" }
@@ -303,20 +126,52 @@ function EditInPlace({ content, name, readOnly = true, placeholder }) {
     >
       {!readOnly && (
         <div className="bg-gray-100  w-full mb-6 flex space-x-3 pl-4 items-center jusitfy-center pt-1 border-b-2">
-          <MarkButton format="bold" icon="format_bold" />
-          <MarkButton format="italic" icon="format_italic" />
-          <MarkButton format="underline" icon="format_underlined" />
-          <MarkButton format="lineThrough" icon="format_strikethrough" />
-          <IndentButton icon="format_indent_increase" />
-          <BlockButton format="heading-one" icon="format_h1" />
-          <BlockButton format="heading-two" icon="format_h2" />
-          <BlockButton format="heading-three" icon="format_h3" />
-          <BlockButton format="left" icon="format_align_left" />
-          <BlockButton format="center" icon="format_align_center" />
-          <BlockButton format="right" icon="format_align_right" />
-          <BlockButton format="justify" icon="format_align_justify" />
-          <BlockButton format="numbered-list" icon="format_list_numbered" />
-          <BlockButton format="bulleted-list" icon="format_list_bulleted" />
+          <MarkButton editor={editor} format="bold" icon="format_bold" />
+          <MarkButton editor={editor} format="italic" icon="format_italic" />
+          <MarkButton
+            editor={editor}
+            format="underline"
+            icon="format_underlined"
+          />
+          <MarkButton
+            editor={editor}
+            format="lineThrough"
+            icon="format_strikethrough"
+          />
+          <IndentButton editor={editor} icon="format_indent_increase" />
+          <BlockButton editor={editor} format="heading-one" icon="format_h1" />
+          <BlockButton editor={editor} format="heading-two" icon="format_h2" />
+          <BlockButton
+            editor={editor}
+            format="heading-three"
+            icon="format_h3"
+          />
+          <BlockButton editor={editor} format="left" icon="format_align_left" />
+          <BlockButton
+            editor={editor}
+            format="center"
+            icon="format_align_center"
+          />
+          <BlockButton
+            editor={editor}
+            format="right"
+            icon="format_align_right"
+          />
+          <BlockButton
+            editor={editor}
+            format="justify"
+            icon="format_align_justify"
+          />
+          <BlockButton
+            editor={editor}
+            format="numbered-list"
+            icon="format_list_numbered"
+          />
+          <BlockButton
+            editor={editor}
+            format="bulleted-list"
+            icon="format_list_bulleted"
+          />
           <div>
             {fetcher.state === "submitting" ? "salvando..." : "last saved.."}
           </div>
