@@ -76,7 +76,10 @@ export default function App() {
         <Outlet />
         <div className="mt-auto bg-pink text-white flex flex-col lg:flex-row space-y-8 text-center lg:space-y-0 lg:text-left justify-between py-8 items-center px-8">
           <p>
-            Rafaela Lanhi | Fisíoterapia & Acupuntura - rafaela@rafalanhi.com.br
+            Rafaela Lanhi | Fisíoterapia & Acupuntura -{" "}
+            <a href="mailto:rafaela@rafalanhi.com.br">
+              rafaela@rafalanhi.com.br
+            </a>
           </p>
           <div className="text-2xl space-x-4">
             <SocialLinks white={true} />

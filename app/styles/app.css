@@ -580,16 +580,16 @@ html {
   margin-top: 2.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-12 {
   margin-top: 3rem;
 }
 
 .mr-10 {
   margin-right: 2.5rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
 }
 
 .block {

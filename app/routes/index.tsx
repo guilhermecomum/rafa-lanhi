@@ -8,13 +8,13 @@ export async function loader(args: LoaderArgs) {
   const acupuntura = {
     title: "Fisioterapia",
     body: "Identificar e melhorar a qualidade de vida e o potencial movimento de cada pessoa. Este é um dos principais objetivos da Fisioterapia que é, segundo a Confederação Mundial de Fisioterapia, uma profissão da área da saúde habilitada para promover, desenvolver, manter e reabilitar as capacidades de movimento e funcionalidade do indivíduo ao longo da sua vida",
-    cover: "",
+    cover: "/assets/fisio-home.jpg",
     link: "/servicos/fisioterapia",
   };
   const mtc = {
     title: "Acupuntura & Medicina Chinesa",
     body: "A Acupuntura é uma ferramenta milenar da Medicina Chinesa, que busca o equilíbrio e a harmonia energética interna do corpo e dele com o ambiente, tendo sempre como objetivo melhorar o seu funcionamento como um todo. Através da aplicação de agulhas em pontos específicos do corpo são estimuladas terminações nervosas existentes na pele e em outros tecidos, enviando assim uma mensagem ao cérebro, provocando vários efeitos no corpo, como ação analgésica ou anti-inflamatória, por exemplo. Deste modo, tratando diversas doenças e promovendo a saúde do indivíduo.",
-    cover: "",
+    cover: "/assets/acupuntura-home.jpg",
     link: "/servicos/medicina-chinesa",
   };
   const services = [acupuntura, mtc];
@@ -60,21 +60,19 @@ export default function Index() {
       >
         <div className="w-10/12 mx-auto flex flex-col h-full justify-around">
           <div className="flex flex-col lg:flex-row space-y-16 lg:space-y-0 pt-16 lg:space-x-16">
-            {[1, 2, 3].map((x, i) => (
-              <div key={i} className="flex flex-col">
-                <h2 className="font-semibold">{`Titulo post ${x}`} </h2>
-                <p className="pt-4">
-                  Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat
-                  et quo num tendi nada.Diuretics paradis num copo é motivis de
-                  denguis.Interagi no mé, cursus quis, vehicula ac nisi.Posuere
-                  libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean
-                  sit amet nisi.
-                </p>
-                <a className="text-right mt-6" href="">
-                  continuar lendo
-                </a>
-              </div>
-            ))}
+            <div className="flex flex-col">
+              <h2 className="font-semibold">Ventosaterapia</h2>
+              <p className="pt-4">
+                Ventosaterapia é uma técnica da Medicina Chinesa que através da
+                aplicação de ventosas faz um efeito de vácuo na pele. A partir
+                dele aumenta a circulação sanguínea, trazendo como benefícios a
+                melhora da circulação sanguínea local e otimização da oxigenação
+                dos tecidos.
+              </p>
+              <a className="text-right mt-6" href="/blog/ventosaterapia">
+                continuar lendo
+              </a>
+            </div>
           </div>
           <Link
             className="text-2xl mt-10 mb-8 text-center lg:text-right"
@@ -92,7 +90,7 @@ export default function Index() {
           Serviços
         </h2>
         <div className="lg:hidden flex flex-col items-start space-y-4">
-          {services.map(({ title, body, link }, index) => (
+          {services.map(({ title, body, link, cover }, index) => (
             <Disclosure
               key={title}
               defaultOpen={title === services[0].title ? true : false}
@@ -110,10 +108,7 @@ export default function Index() {
                       veja mais...
                     </Link>
 
-                    <img
-                      className="my-12 col-start-7 col-span-5"
-                      src="/assets/acupuntura-home.jpg"
-                    />
+                    <img className="my-12 col-start-7 col-span-5" src={cover} />
                   </Disclosure.Panel>
                 </>
               )}
@@ -142,7 +137,7 @@ export default function Index() {
             </Tab.List>
 
             <Tab.Panels>
-              {services.map(({ title, body, link }, index) => (
+              {services.map(({ title, body, link, cover }, index) => (
                 <Tab.Panel>
                   <div className="lg:grid lg:grid-cols-12">
                     <div className="col-start-2 col-span-4 mt-12">
@@ -152,10 +147,7 @@ export default function Index() {
                         veja mais...
                       </Link>
                     </div>
-                    <img
-                      className="my-12 col-start-7 col-span-5"
-                      src="/assets/acupuntura-home.jpg"
-                    />
+                    <img className="my-12 col-start-7 col-span-5" src={cover} />
                   </div>
                 </Tab.Panel>
               ))}

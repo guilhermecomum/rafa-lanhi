@@ -3,22 +3,20 @@ import { Link } from "@remix-run/react";
 export default function ServicesList() {
   return (
     <div className="space-y-8">
-      {[1, 2, 3, 4, 5].map((x) => (
-        <div className="bg-green-50 p-8">
-          <Link className="text-pink" to={`/blog/${x}`}>
-            <h2 className="font-semibold text-4xl">{`Post ${x}`}</h2>
-          </Link>
-          <p className="pt-4 text-gray-600">
-            Interessantiss quisso pudia ce receita de bolis, mais bolis eu num
-            gostis.Em pé sem cair, deitado sem dormir, sentado sem cochilar e
-            fazendo pose.Detraxit consequat et quo num tendi nada.Paisis,
-            filhis, espiritis santis.
-          </p>
-          <Link className="block mt-4 font-semibold" to={`/blog/${x}`}>
-            continuar lendo
-          </Link>
-        </div>
-      ))}
+      <div className="bg-green-50 p-8">
+        <Link className="text-pink" to={`/blog/ventosaterapia`}>
+          <h2 className="font-semibold text-4xl">Ventosaterapia</h2>
+        </Link>
+        <p className="pt-4 text-gray-600">
+          Ventosaterapia é uma técnica da Medicina Chinesa que através da
+          aplicação de ventosas faz um efeito de vácuo na pele. A partir dele
+          aumenta a circulação sanguínea, trazendo como benefícios a melhora da
+          circulação sanguínea local e otimização da oxigenação dos tecidos.
+        </p>
+        <Link className="block mt-4 font-semibold" to={`/blog/ventosaterapia`}>
+          continuar lendo
+        </Link>
+      </div>
     </div>
   );
 }

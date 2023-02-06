@@ -61,21 +61,6 @@ function SocialLinks({ white }: SocialLinkProps) {
           />
         )}
       </a>
-      <a className="inline-block" href="" target="_blank">
-        {white ? (
-          <img
-            className="w-5 h-5"
-            alt="icone linkedin"
-            src="/assets/icons/linkedin-white.svg"
-          />
-        ) : (
-          <img
-            className="w-5 h-5"
-            alt="icone linkedin"
-            src="/assets/icons/linkedin.svg"
-          />
-        )}
-      </a>
     </div>
   );
 }

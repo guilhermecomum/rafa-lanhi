@@ -5,7 +5,7 @@ export default function Sobre() {
         className="object-contain w-full lg:w-2/6 lg:mt-16 mr-10 lg:rounded-l-3xl lg:rounded-tr-3xl"
         src="/assets/sobre.jpg"
       />
-      <div className="text-justify mt-8 lg:m-0">
+      <div className="text-justify mt-8 lg:m-0 lg:w-4/6">
         <h2 className="font-semibold text-pink text-center text-4xl">Sobre</h2>
         <div className="text-xl">
           <p className="pt-4 indent-6">
