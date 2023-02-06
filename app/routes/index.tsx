@@ -45,7 +45,7 @@ export default function Index() {
 
           <div className="text-center mb-8">
             <a
-              href="http://cal.com/rafaela-lanhi"
+              href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
               target="_blank"
               className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
             >
