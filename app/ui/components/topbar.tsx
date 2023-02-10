@@ -27,7 +27,7 @@ function Topbar() {
             src="/assets/logo.svg"
           />
         </Link>
-        <nav className="uppercase hidden lg:flex justify-between items-center lg:space-x-8">
+        <nav className="uppercase hidden lg:flex justify-between items-center lg:space-x-8 pr-4">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "text-pink" : undefined)}

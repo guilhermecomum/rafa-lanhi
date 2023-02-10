@@ -3,15 +3,14 @@
    viewBox="0 0 512 512"
    version="1.1"
    id="svg246"
-   sodipodi:docname="facebook.svg"
+   sodipodi:docname="facebook-white.svg"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs250" />
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs250" /><sodipodi:namedview
      id="namedview248"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -21,18 +20,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.4609375"
-     inkscape:cx="229.9661"
-     inkscape:cy="256"
+     inkscape:zoom="0.921875"
+     inkscape:cx="129.62712"
+     inkscape:cy="277.69492"
      inkscape:window-width="1920"
-     inkscape:window-height="1131"
+     inkscape:window-height="1011"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg246" />
-  <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-  <path
-     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
-     id="path244"
-     style="fill:#ffffff;fill-opacity:1" />
-</svg>
+     inkscape:current-layer="svg246" /><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
+     d="M 432,32 H 80 A 48,48 0 0 0 32,80 v 352 a 48,48 0 0 0 48,48 H 217.25 V 327.69 h -63 V 256 h 63 v -54.64 c 0,-62.15 37,-96.48 93.67,-96.48 27.14,0 55.52,4.84 55.52,4.84 v 61 h -31.27 c -30.81,0 -40.42,19.12 -40.42,38.73 V 256 h 68.78 l -11,71.69 H 294.75 V 480 H 432 a 48,48 0 0 0 48,-48 V 80 A 48,48 0 0 0 432,32 Z"
+     id="path36767"
+     style="fill:none;stroke:#ffffff;stroke-width:35;stroke-dasharray:none;stroke-opacity:1" /></svg>

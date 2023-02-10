@@ -62,6 +62,21 @@ function SocialLinks({ white }: SocialLinkProps) {
           />
         )}
       </a>
+      <a href="mailto:rafaela@rafalanhi.com.br">
+        {white ? (
+          <img
+            className="w-5 h-5"
+            alt="icone email"
+            src="/assets/icons/email-white.svg"
+          />
+        ) : (
+          <img
+            className="w-5 h-5"
+            alt="icone email"
+            src="/assets/icons/email.svg"
+          />
+        )}
+      </a>
     </div>
   );
 }
