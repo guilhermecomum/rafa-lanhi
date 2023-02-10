@@ -517,6 +517,40 @@ html {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .relative {
   position: relative;
 }
@@ -529,12 +563,32 @@ html {
   grid-column: span 4 / span 4;
 }
 
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .col-start-7 {
   grid-column-start: 7;
 }
 
 .col-start-2 {
   grid-column-start: 2;
+}
+
+.col-start-9 {
+  grid-column-start: 9;
+}
+
+.col-start-3 {
+  grid-column-start: 3;
 }
 
 .mx-auto {
@@ -592,6 +646,18 @@ html {
   margin-right: 2.5rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
+.ml-20 {
+  margin-left: 5rem;
+}
+
+.mr-8 {
+  margin-right: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -620,6 +686,10 @@ html {
   height: 1.5rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -638,6 +708,22 @@ html {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-4\/6 {
+  width: 66.666667%;
+}
+
+.w-2\/6 {
+  width: 33.333333%;
 }
 
 .translate-y-1 {
@@ -724,6 +810,24 @@ html {
   border-radius: 0.75rem;
 }
 
+.rounded-l-3xl {
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.rounded-r-3xl {
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+.rounded-bl-3xl {
+  border-bottom-left-radius: 1.5rem;
+}
+
+.rounded-tl-3xl {
+  border-top-left-radius: 1.5rem;
+}
+
 .border-green {
   --tw-border-opacity: 1;
   border-color: hsl(118 15% 65% / var(--tw-border-opacity));
@@ -802,6 +906,26 @@ html {
 
 .pt-16 {
   padding-top: 4rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
+}
+
+.pr-8 {
+  padding-right: 2rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -1003,6 +1127,10 @@ html {
 
   .lg\:w-auto {
     width: auto;
+  }
+
+  .lg\:w-5\/6 {
+    width: 83.333333%;
   }
 
   .lg\:grid-cols-12 {

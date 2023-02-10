@@ -62,7 +62,7 @@ export default function Index() {
           <div className="flex flex-col lg:flex-row space-y-16 lg:space-y-0 pt-16 lg:space-x-16">
             <div className="flex flex-col">
               <h2 className="font-semibold">Ventosaterapia</h2>
-              <p className="pt-4">
+              <p className="pt-4 text-justify">
                 Ventosaterapia é uma técnica da Medicina Chinesa que através da
                 aplicação de ventosas faz um efeito de vácuo na pele. A partir
                 dele aumenta a circulação sanguínea, trazendo como benefícios a
@@ -97,7 +97,7 @@ export default function Index() {
             >
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="text-xl flex justify-between p-4 w-full text-white bg-green">
+                  <Disclosure.Button className="text-xl flex justify-between p-4 w-full text-white bg-green text-left">
                     {title}
                     <i>⌄</i>
                   </Disclosure.Button>
@@ -139,15 +139,18 @@ export default function Index() {
             <Tab.Panels>
               {services.map(({ title, body, link, cover }, index) => (
                 <Tab.Panel>
-                  <div className="lg:grid lg:grid-cols-12">
-                    <div className="col-start-2 col-span-4 mt-12">
+                  <div className="lg:w-4/6 lg:flex mx-auto">
+                    <div className="mt-12 w-4/6">
                       <h2 className="text-4xl text-pink">{title}</h2>
                       <p className="pt-4 text-justify">{body}</p>
                       <Link to={link} className="font-semibold mt-4 block">
                         veja mais...
                       </Link>
                     </div>
-                    <img className="my-12 col-start-7 col-span-5" src={cover} />
+                    <img
+                      className="my-12 ml-20 w-2/6 rounded-tl-3xl rounded-r-3xl object-contain"
+                      src={cover}
+                    />
                   </div>
                 </Tab.Panel>
               ))}
