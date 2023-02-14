@@ -56,21 +56,81 @@ export default function Index() {
       </section>
       <section
         id="blog"
-        className="w-full bg-pink lg:bg-white-flower lg:bg-half-center lg:h-[80vh] lg:bg-no-repeat flex flex-col text-white"
+        className="w-full bg-pink lg:bg-white-flower lg:bg-half-center  lg:bg-no-repeat flex flex-col text-white"
       >
         <div className="w-10/12 mx-auto flex flex-col h-full justify-around">
-          <div className="flex flex-col lg:flex-row space-y-16 lg:space-y-0 pt-16 lg:space-x-16">
+          <div className="flex flex-col space-y-16  pt-16">
             <div className="flex flex-col">
-              <h2 className="font-semibold">Ventosaterapia</h2>
-              <p className="pt-4 text-justify">
-                Ventosaterapia é uma técnica da Medicina Chinesa que através da
-                aplicação de ventosas faz um efeito de vácuo na pele. A partir
-                dele aumenta a circulação sanguínea, trazendo como benefícios a
-                melhora da circulação sanguínea local e otimização da oxigenação
-                dos tecidos.
-              </p>
-              <a className="text-right mt-6" href="/blog/ventosaterapia">
-                continuar lendo
+              <a
+                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                href="/blog/auriculoterapia"
+              >
+                <img
+                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  src="/assets/blog/auriculoterapia.jpg"
+                />
+                <div className="mt-4 lg:mt-0">
+                  <h2 className="font-semibold text-2xl">Auriculoterapia</h2>
+                  <p className="pt-4 text-justify">
+                    Na Medicina Chinesa a orelha apresenta pontos específicos
+                    que representam um mapa do corpo inteiro. Desta maneira, a
+                    Auriculoterapia é uma ferramenta terapêutica que utiliza
+                    estes pontos representativos do corpo para realizar
+                    diagnóstico e tratamentos de saúde física e/ou emocional,
+                    como dores na coluna, tensões musculares, alergias,
+                    ansiedade, enxaqueca, obesidade, distúrbios do sono, entre
+                    muitos outros.
+                  </p>
+                  <p className="text-right">continuar lendo</p>
+                </div>
+              </a>
+            </div>
+
+            <div className="flex flex-col">
+              <a
+                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                href="/blog/ventosaterapia"
+              >
+                <img
+                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  src="/assets/blog/liberacaomiofaciall.jpg"
+                />
+                <div className="mt-4 lg:mt-0">
+                  <h2 className="font-semibold text-2xl">
+                    Liberação Miofascial
+                  </h2>
+                  <p className="pt-4 text-justify">
+                    A liberação miofascial acontece a partir de técnicas de
+                    mobilização, pressão ou manipulação de alguns pontos no
+                    corpo com objetivo de liberar a fáscia do músculo. Seu
+                    objetivo é basicamente aliviar dores e tensões musculares.
+                  </p>
+                  <p className="text-right">continuar lendo</p>
+                </div>
+              </a>
+            </div>
+
+            <div className="flex flex-col">
+              <a
+                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                href="/blog/ventosaterapia"
+              >
+                <img
+                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  src="/assets/blog/Ventosaterapia.jpg"
+                />
+                <div className="mt-4 lg:mt-0">
+                  <h2 className="font-semibold text-2xl">Ventosaterapia</h2>
+                  <p className="pt-4 text-justify">
+                    Ventosaterapia é uma técnica da Medicina Chinesa que através
+                    da aplicação de ventosas faz um efeito de vácuo na pele. A
+                    partir dele aumenta a circulação sanguínea, trazendo como
+                    benefícios a melhora da circulação sanguínea local e
+                    otimização da oxigenação dos tecidos.
+                  </p>
+
+                  <p className="text-right mt-6">continuar lendo</p>
+                </div>
               </a>
             </div>
           </div>
