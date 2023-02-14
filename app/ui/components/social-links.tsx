@@ -62,7 +62,7 @@ function SocialLinks({ white }: SocialLinkProps) {
           />
         )}
       </a>
-      <a href="mailto:rafaela@rafalanhi.com.br">
+      <a href="mailto:rafalanhi@gmail.com">
         {white ? (
           <img
             className="w-5 h-5"

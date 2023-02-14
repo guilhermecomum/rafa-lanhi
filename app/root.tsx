@@ -75,7 +75,7 @@ export default function App() {
         <Topbar />
         <Outlet />
         <div className="mt-auto bg-pink text-white flex flex-col lg:flex-row space-y-8 text-center lg:space-y-0 lg:text-left justify-between py-8 items-center px-8">
-          <p>Rafaela Lanhi | Fisíoterapia & Acupuntura</p>
+          <p>Rafaela Lanhi | Fisioterapia & Acupuntura</p>
           <div className="text-2xl space-x-4">
             <SocialLinks white={true} />
           </div>

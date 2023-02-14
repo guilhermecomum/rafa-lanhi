@@ -13,7 +13,7 @@ export async function loader(args: LoaderArgs) {
   };
   const mtc = {
     title: "Acupuntura & Medicina Chinesa",
-    body: "A Acupuntura é uma ferramenta milenar da Medicina Chinesa, que busca o equilíbrio e a harmonia energética interna do corpo e dele com o ambiente, tendo sempre como objetivo melhorar o seu funcionamento como um todo. Através da aplicação de agulhas em pontos específicos do corpo são estimuladas terminações nervosas existentes na pele e em outros tecidos, enviando assim uma mensagem ao cérebro, provocando vários efeitos no corpo, como ação analgésica ou anti-inflamatória, por exemplo. Deste modo, tratando diversas doenças e promovendo a saúde do indivíduo.",
+    body: "A Acupuntura é uma ferramenta milenar da Medicina Chinesa, que busca o equilíbrio e a harmonia energética interna do corpo e dele com o ambiente, tendo sempre como objetivo melhorar o seu funcionamento como um todo.",
     cover: "/assets/acupuntura-home.jpg",
     link: "/servicos/medicina-chinesa",
   };
@@ -104,10 +104,18 @@ export default function Index() {
                   <Disclosure.Panel className="text-gray-500">
                     <h2 className="text-4xl text-pink">{title}</h2>
                     <p className="pt-4 text-justify">{body}</p>
-                    <Link to={link} className="font-semibold mt-4">
+                    <Link to={link} className="font-semibold mt-4 block">
                       veja mais...
                     </Link>
-
+                    <div className="text-center mb-8">
+                      <a
+                        href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
+                        target="_blank"
+                        className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+                      >
+                        agendar
+                      </a>
+                    </div>
                     <img className="my-12 col-start-7 col-span-5" src={cover} />
                   </Disclosure.Panel>
                 </>
@@ -146,6 +154,15 @@ export default function Index() {
                       <Link to={link} className="font-semibold mt-4 block">
                         veja mais...
                       </Link>
+                      <div className="text-center mb-8">
+                        <a
+                          href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
+                          target="_blank"
+                          className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+                        >
+                          agendar
+                        </a>
+                      </div>
                     </div>
                     <img
                       className="my-12 ml-20 w-2/6 rounded-tl-3xl rounded-r-3xl object-contain"
