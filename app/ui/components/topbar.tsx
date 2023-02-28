@@ -55,6 +55,14 @@ function Topbar() {
           >
             serviços
           </NavLink>
+          <a
+            href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
+            target="_blank"
+            className="text-pink font-semibold"
+          >
+            agendar
+          </a>
+
           <div className="flex space-x-4 text-3xl text-green">
             <SocialLinks />
           </div>

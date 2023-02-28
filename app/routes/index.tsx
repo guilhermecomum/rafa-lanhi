@@ -26,15 +26,9 @@ export default function Index() {
 
   return (
     <main className="relative lg:flex lg:items-center lg:justify-center flex flex-col">
-      <section className="flex flex-col lg:flex-row lg:w-8/12 lg:py-10 lg:px-4 lg:items-center lg:justify-between lg:space-x-10">
-        <div className="lg:w-2/6 w-full p-4">
-          <img
-            className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
-            src="/assets/rafa-home.webp"
-          />
-        </div>
-        <div className="px-4 w-full lg:w-4/6">
-          <h2 className="text-2xl lg:text-4xl text-center font-semibold text-pink mb-4">
+      <section className="flex flex-col container mx-auto lg:py-10  lg:items-center lg:justify-between lg:space-x-10">
+        <div className="w-full px-4">
+          <h2 className="text-2xl lg:text-4xl text-center font-semibold text-pink my-4">
             Fisioterapia & Acupuntura
           </h2>
           <p className="pt-4 text-center text-xl">
@@ -42,16 +36,29 @@ export default function Index() {
             estar para as pessoas através das técnicas da medicina chinesa
             somadas a formação em fisioterapia.
           </p>
-
-          <div className="text-center mb-8">
-            <a
-              href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
-              target="_blank"
-              className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
-            >
-              agendar
-            </a>
+        </div>
+        <div className="flex flex-col lg:flex-row align-center justify-center items-center my-10">
+          <div className="lg:w-2/6 w-full p-4">
+            <img
+              className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
+              src="/assets/rafa-home.webp"
+            />
           </div>
+          <div className="lg:w-2/6 w-full p-4 lg:ml-8">
+            <img
+              className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
+              src="/assets/new-logo.png"
+            />
+          </div>
+        </div>
+        <div className="text-center mb-8 mx-2 lg:hidden">
+          <a
+            href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
+            target="_blank"
+            className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+          >
+            agendar
+          </a>
         </div>
       </section>
       <section
