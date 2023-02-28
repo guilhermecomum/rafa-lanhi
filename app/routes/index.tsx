@@ -81,7 +81,9 @@ export default function Index() {
                     ansiedade, enxaqueca, obesidade, distúrbios do sono, entre
                     muitos outros.
                   </p>
-                  <p className="text-right">continuar lendo</p>
+                  <p className="text-right mt-6 border rounded inline-block p-2">
+                    continuar lendo
+                  </p>
                 </div>
               </a>
             </div>
@@ -105,7 +107,9 @@ export default function Index() {
                     corpo com objetivo de liberar a fáscia do músculo. Seu
                     objetivo é basicamente aliviar dores e tensões musculares.
                   </p>
-                  <p className="text-right">continuar lendo</p>
+                  <p className="text-right mt-6 border rounded inline-block p-2">
+                    continuar lendo
+                  </p>
                 </div>
               </a>
             </div>
@@ -129,13 +133,15 @@ export default function Index() {
                     otimização da oxigenação dos tecidos.
                   </p>
 
-                  <p className="text-right mt-6">continuar lendo</p>
+                  <p className="text-right mt-6 border rounded inline-block p-2">
+                    continuar lendo
+                  </p>
                 </div>
               </a>
             </div>
           </div>
           <Link
-            className="text-2xl mt-10 mb-8 text-center lg:text-right"
+            className="mt-6 text-center border rounded p-2 mt-14 mb-6"
             to="/blog"
           >
             ver todos os posts
@@ -162,7 +168,6 @@ export default function Index() {
                     <i>⌄</i>
                   </Disclosure.Button>
                   <Disclosure.Panel className="text-gray-500">
-                    <h2 className="text-4xl text-pink">{title}</h2>
                     <p className="pt-4 text-justify">{body}</p>
                     <Link to={link} className="font-semibold mt-4 block">
                       veja mais...
