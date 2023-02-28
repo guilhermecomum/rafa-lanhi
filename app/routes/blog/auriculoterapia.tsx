@@ -2,7 +2,7 @@ export default function Post() {
   return (
     <div>
       <div className="lg:bg-green-50 lg:p-8 text-gray-600 text-justify">
-        <h2 className="font-semibold text-pink text-4xl">Auriculoterapia</h2>
+        <h2 className="font-semibold text-pink text-2xl">Auriculoterapia</h2>
         <img
           className="mt-8 object-contain"
           src="/assets/blog/auriculoterapia.jpg"
