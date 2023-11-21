@@ -12,13 +12,13 @@ function SocialLinks({ white }: SocialLinkProps) {
       >
         {white ? (
           <img
-            className="w-5 h-5 fill-green"
+            className="h-5 w-5 fill-green"
             alt="icone whatsapp"
             src="/assets/icons/whatsapp-white.svg"
           />
         ) : (
           <img
-            className="w-5 h-5 fill-green"
+            className="h-5 w-5 fill-green"
             alt="icone whatsapp"
             src="/assets/icons/whatsapp.svg"
           />
@@ -31,13 +31,13 @@ function SocialLinks({ white }: SocialLinkProps) {
       >
         {white ? (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone instagram"
             src="/assets/icons/instagram-white.svg"
           />
         ) : (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone instagram"
             src="/assets/icons/instagram.svg"
           />
@@ -45,18 +45,18 @@ function SocialLinks({ white }: SocialLinkProps) {
       </a>
       <a
         className="inline-block"
-        href="https://www.facebook.com/profile.php?id=100088214301403&mibextid=ZbWKwL"
+        href="https://www.facebook.com/profile.php?id=100090328122198"
         target="_blank"
       >
         {white ? (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone facebook"
             src="/assets/icons/facebook-white.svg"
           />
         ) : (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone facebook"
             src="/assets/icons/facebook.svg"
           />
@@ -65,13 +65,13 @@ function SocialLinks({ white }: SocialLinkProps) {
       <a href="mailto:rafalanhi@gmail.com">
         {white ? (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone email"
             src="/assets/icons/email-white.svg"
           />
         ) : (
           <img
-            className="w-5 h-5"
+            className="h-5 w-5"
             alt="icone email"
             src="/assets/icons/email.svg"
           />

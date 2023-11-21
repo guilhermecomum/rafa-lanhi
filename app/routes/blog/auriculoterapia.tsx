@@ -1,8 +1,10 @@
+import { BackButton } from "~/ui/components/back-button";
+
 export default function Post() {
   return (
     <div>
-      <div className="lg:bg-green-50 lg:p-8 text-gray-600 text-justify">
-        <h2 className="font-semibold text-pink text-2xl">Auriculoterapia</h2>
+      <div className="text-justify text-gray-600 lg:bg-green-50 lg:p-8">
+        <h2 className="text-2xl font-semibold text-pink">Auriculoterapia</h2>
         <img
           className="mt-8 object-contain"
           src="/assets/blog/auriculoterapia.jpg"
@@ -26,6 +28,7 @@ export default function Post() {
         </p>
 
         <p className="pt-4">Que tal experimentar uma sessão?</p>
+        <BackButton to="/blog" />
       </div>
     </div>
   );

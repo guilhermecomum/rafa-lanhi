@@ -48,7 +48,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col">
         {process.env.NODE_ENV === "development" || !gaTrackingId ? null : (
           <>
             <script
@@ -74,9 +74,11 @@ export default function App() {
         )}
         <Topbar />
         <Outlet />
-        <div className="mt-auto bg-pink text-white flex flex-col lg:flex-row space-y-8 text-center lg:space-y-0 lg:text-left justify-between py-8 items-center px-8">
-          <p>Rafaela Lanhi | Fisioterapia & Acupuntura</p>
-          <div className="text-2xl space-x-4">
+        <div className="mt-auto flex flex-col items-center justify-between space-y-8 bg-pink py-8 px-8 text-center text-white lg:flex-row lg:space-y-0 lg:text-left">
+          <a href="/">
+            <p>Rafaela Lanhi | Fisioterapia & Acupuntura</p>
+          </a>
+          <div className="space-x-4 text-2xl">
             <SocialLinks white={true} />
           </div>
         </div>

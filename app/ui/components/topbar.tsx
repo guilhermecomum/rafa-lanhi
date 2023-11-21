@@ -7,14 +7,14 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 function Topbar() {
   return (
     <Popover>
-      <header className="flex w-full lg:flex-row lg:h-28 flex-col px-2 py-2 lg:py-4 lg:justify-between items-center shadow-custom-pink">
-        <div className="lg:hidden flex w-full justify-between items-center">
+      <header className="flex w-full flex-col items-center px-2 py-2 shadow-custom-pink lg:h-28 lg:flex-row lg:justify-between lg:py-4">
+        <div className="flex w-full items-center justify-between lg:hidden">
           <div className="flex items-center">
             <Popover.Button>
               <Bars3Icon className="h-6 w-6 text-pink" />
             </Popover.Button>
             <Link to="/">
-              <img className="lg:hidden px-4" src="/assets/logo-mobile.svg" />
+              <img className="px-4 lg:hidden" src="/assets/logo-mobile.svg" />
             </Link>
           </div>
           <div className="flex space-x-2 text-xl text-green">
@@ -27,7 +27,7 @@ function Topbar() {
             src="/assets/logo.svg"
           />
         </Link>
-        <nav className="uppercase hidden lg:flex justify-between items-center lg:space-x-8 pr-4">
+        <nav className="hidden items-center justify-between pr-4 uppercase lg:flex lg:space-x-8">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "text-pink" : undefined)}
@@ -44,21 +44,22 @@ function Topbar() {
           <NavLink
             prefetch="intent"
             className={({ isActive }) => (isActive ? "text-pink" : undefined)}
-            to="/blog"
-          >
-            blog
-          </NavLink>
-          <NavLink
-            prefetch="intent"
-            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
             to="/servicos"
           >
             serviços
           </NavLink>
+          <NavLink
+            prefetch="intent"
+            className={({ isActive }) => (isActive ? "text-pink" : undefined)}
+            to="/blog"
+          >
+            blog
+          </NavLink>
+
           <a
             href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
             target="_blank"
-            className="text-pink font-semibold"
+            className="font-semibold text-pink"
           >
             agendar
           </a>
@@ -77,7 +78,7 @@ function Topbar() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="flex flex-col uppercase w-full px-4 py-4 space-y-2">
+        <Popover.Panel className="flex w-full flex-col space-y-2 px-4 py-4 uppercase">
           {({ close }) => (
             <>
               <NavLink

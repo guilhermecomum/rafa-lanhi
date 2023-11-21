@@ -25,37 +25,37 @@ export default function Index() {
   const { services } = useLoaderData<typeof loader>();
 
   return (
-    <main className="relative lg:flex lg:items-center lg:justify-center flex flex-col">
-      <section className="flex flex-col container mx-auto lg:py-10  lg:items-center lg:justify-between lg:space-x-10">
+    <main className="relative flex flex-col lg:flex lg:items-center lg:justify-center">
+      <section className="container mx-auto flex flex-col lg:items-center  lg:justify-between lg:space-x-10 lg:py-10">
         <div className="w-full px-4">
-          <h2 className="text-2xl lg:text-4xl text-center font-semibold text-pink my-4">
+          <h2 className="my-4 text-center text-2xl font-semibold text-pink lg:text-3xl">
             Fisioterapia & Acupuntura
           </h2>
-          <p className="pt-4 text-center text-xl">
+          <p className="pt-4 text-center text-xl lg:text-lg">
             Olá, sou <b>Rafaela Lanhi</b> e minha maior satisfação é trazer bem
             estar para as pessoas através das técnicas da medicina chinesa
             somadas a formação em fisioterapia.
           </p>
         </div>
-        <div className="flex flex-col lg:flex-row align-center justify-center items-center my-10">
-          <div className="lg:w-2/6 w-full p-4">
+        <div className="align-center my-10 flex flex-col items-center justify-center lg:flex-row">
+          <div className="w-full p-4 lg:w-2/6">
             <img
-              className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
+              className="w-full object-contain lg:rounded-l-3xl lg:rounded-tr-3xl"
               src="/assets/rafa-home.webp"
             />
           </div>
-          <div className="lg:w-2/6 w-full p-4 lg:ml-8">
+          <div className="w-full p-4 lg:ml-8 lg:w-2/6">
             <img
-              className="object-contain w-full lg:rounded-l-3xl lg:rounded-tr-3xl"
+              className="w-full object-contain lg:rounded-l-3xl lg:rounded-tr-3xl"
               src="/assets/new-logo.png"
             />
           </div>
         </div>
-        <div className="text-center mb-8 mx-2 lg:hidden">
+        <div className="mx-2 mb-8 text-center lg:hidden">
           <a
             href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
             target="_blank"
-            className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+            className="mt-8 inline-block w-full self-center rounded-xl bg-pink py-2 px-4 text-xl font-semibold text-white lg:w-auto"
           >
             agendar
           </a>
@@ -63,22 +63,22 @@ export default function Index() {
       </section>
       <section
         id="blog"
-        className="w-full bg-pink lg:bg-white-flower lg:bg-half-center  lg:bg-no-repeat flex flex-col text-white"
+        className="flex w-full flex-col bg-pink  text-white lg:bg-white-flower lg:bg-half-center lg:bg-no-repeat"
       >
-        <div className="w-10/12 mx-auto flex flex-col h-full justify-around">
+        <div className="mx-auto flex h-full w-10/12 flex-col justify-around">
           <div className="flex flex-col space-y-16  pt-16">
             <div className="flex flex-col">
               <a
-                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                className="flex flex-col items-center justify-center text-center lg:flex-row lg:items-start lg:text-left"
                 href="/blog/auriculoterapia"
               >
                 <img
-                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  className="mr-0 w-48 object-contain lg:mr-10"
                   src="/assets/blog/auriculoterapia.jpg"
                 />
                 <div className="mt-4 lg:mt-0">
-                  <h2 className="font-semibold text-2xl">Auriculoterapia</h2>
-                  <p className="pt-4 text-justify">
+                  <h2 className="font-semibold lg:text-xl">Auriculoterapia</h2>
+                  <p className="pt-4 text-justify lg:text-sm">
                     Na Medicina Chinesa a orelha apresenta pontos específicos
                     que representam um mapa do corpo inteiro. Desta maneira, a
                     Auriculoterapia é uma ferramenta terapêutica que utiliza
@@ -88,7 +88,7 @@ export default function Index() {
                     ansiedade, enxaqueca, obesidade, distúrbios do sono, entre
                     muitos outros.
                   </p>
-                  <p className="text-right mt-6 border rounded inline-block p-2">
+                  <p className="mt-6 inline-block rounded border p-2 text-right">
                     continuar lendo
                   </p>
                 </div>
@@ -97,24 +97,24 @@ export default function Index() {
 
             <div className="flex flex-col">
               <a
-                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                className="flex flex-col items-center justify-center text-center lg:flex-row lg:items-start lg:text-left"
                 href="/blog/ventosaterapia"
               >
                 <img
-                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  className="mr-0 w-48 object-contain lg:mr-10"
                   src="/assets/blog/liberacaomiofaciall.jpg"
                 />
                 <div className="mt-4 lg:mt-0">
-                  <h2 className="font-semibold text-2xl">
+                  <h2 className="text-2xl font-semibold lg:text-xl">
                     Liberação Miofascial
                   </h2>
-                  <p className="pt-4 text-justify">
+                  <p className="pt-4 text-justify lg:text-sm">
                     A liberação miofascial acontece a partir de técnicas de
                     mobilização, pressão ou manipulação de alguns pontos no
                     corpo com objetivo de liberar a fáscia do músculo. Seu
                     objetivo é basicamente aliviar dores e tensões musculares.
                   </p>
-                  <p className="text-right mt-6 border rounded inline-block p-2">
+                  <p className="mt-6 inline-block rounded border p-2 text-right">
                     continuar lendo
                   </p>
                 </div>
@@ -123,16 +123,18 @@ export default function Index() {
 
             <div className="flex flex-col">
               <a
-                className="flex lg:flex-row flex-col justify-center items-center lg:items-start text-center lg:text-left"
+                className="flex flex-col items-center justify-center text-center lg:flex-row lg:items-start lg:text-left"
                 href="/blog/ventosaterapia"
               >
                 <img
-                  className="w-48 mr-0 lg:mr-10 object-contain"
+                  className="mr-0 w-48 object-contain lg:mr-10"
                   src="/assets/blog/Ventosaterapia.jpg"
                 />
                 <div className="mt-4 lg:mt-0">
-                  <h2 className="font-semibold text-2xl">Ventosaterapia</h2>
-                  <p className="pt-4 text-justify">
+                  <h2 className="text-2xl font-semibold lg:text-xl">
+                    Ventosaterapia
+                  </h2>
+                  <p className="pt-4 text-justify lg:text-sm">
                     Ventosaterapia é uma técnica da Medicina Chinesa que através
                     da aplicação de ventosas faz um efeito de vácuo na pele. A
                     partir dele aumenta a circulação sanguínea, trazendo como
@@ -140,7 +142,7 @@ export default function Index() {
                     otimização da oxigenação dos tecidos.
                   </p>
 
-                  <p className="text-right mt-6 border rounded inline-block p-2">
+                  <p className="mt-6 inline-block rounded border p-2 text-right">
                     continuar lendo
                   </p>
                 </div>
@@ -148,7 +150,7 @@ export default function Index() {
             </div>
           </div>
           <Link
-            className="mt-6 text-center border rounded p-2 mt-14 mb-6"
+            className="mt-6 mt-14 mb-6 rounded border p-2 text-center"
             to="/blog"
           >
             ver todos os posts
@@ -157,12 +159,12 @@ export default function Index() {
       </section>
       <section
         id="services"
-        className="bg-green-50 lg:bg-pink-flower lg:bg-half lg:bg-no-repeat w-full flex flex-col px-4 py-10"
+        className="flex w-full flex-col bg-green-50 px-4 py-10 lg:bg-pink-flower lg:bg-half lg:bg-no-repeat"
       >
-        <h2 className="text-5xl text-center text-pink mb-4 lg:hidden">
+        <h2 className="mb-4 text-center text-5xl text-pink lg:hidden">
           Serviços
         </h2>
-        <div className="lg:hidden flex flex-col items-start space-y-4">
+        <div className="flex flex-col items-start space-y-4 lg:hidden">
           {services.map(({ title, body, link, cover }, index) => (
             <Disclosure
               key={title}
@@ -170,34 +172,34 @@ export default function Index() {
             >
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="text-xl flex justify-between p-4 w-full text-white bg-green text-left">
+                  <Disclosure.Button className="flex w-full justify-between bg-green p-4 text-left text-xl text-white">
                     {title}
                     <i>⌄</i>
                   </Disclosure.Button>
                   <Disclosure.Panel className="text-gray-500">
                     <p className="pt-4 text-justify">{body}</p>
-                    <Link to={link} className="font-semibold mt-4 block">
+                    <Link to={link} className="mt-4 block font-semibold">
                       veja mais...
                     </Link>
-                    <div className="text-center mb-8">
+                    <div className="mb-8 text-center">
                       <a
                         href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
                         target="_blank"
-                        className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+                        className="mt-8 inline-block w-full self-center rounded-xl bg-pink py-2 px-4 text-xl font-semibold text-white lg:w-auto"
                       >
                         agendar
                       </a>
                     </div>
-                    <img className="my-12 col-start-7 col-span-5" src={cover} />
+                    <img className="col-span-5 col-start-7 my-12" src={cover} />
                   </Disclosure.Panel>
                 </>
               )}
             </Disclosure>
           ))}
         </div>
-        <div className="hidden lg:flex flex-col">
+        <div className="hidden flex-col lg:flex">
           <Tab.Group defaultIndex={0}>
-            <Tab.List className="flex text-2xl space-x-8 border-green self-center">
+            <Tab.List className="flex space-x-8 self-center border-green text-2xl">
               {services.map(({ title }, index) => (
                 <Tab as={Fragment} key={index}>
                   {({ selected }) => (
@@ -205,8 +207,8 @@ export default function Index() {
                     <button
                       className={
                         selected
-                          ? "text-pink lg:p-2 lg:border-2 lg:border-pink"
-                          : "text-green-500 lg:p-2 lg:border-2 lg:border-green-500"
+                          ? "text-pink lg:border-2 lg:border-pink lg:p-2 lg:text-xl"
+                          : "text-green-500 lg:border-2 lg:border-green-500 lg:p-2"
                       }
                     >
                       {title}
@@ -219,25 +221,27 @@ export default function Index() {
             <Tab.Panels>
               {services.map(({ title, body, link, cover }, index) => (
                 <Tab.Panel>
-                  <div className="lg:w-4/6 lg:flex mx-auto">
+                  <div className="mx-auto lg:flex lg:w-4/6">
                     <div className="mt-12 w-4/6">
-                      <h2 className="text-4xl text-pink">{title}</h2>
+                      <h2 className="text-4xl text-pink lg:text-3xl">
+                        {title}
+                      </h2>
                       <p className="pt-4 text-justify">{body}</p>
-                      <Link to={link} className="font-semibold mt-4 block">
+                      <Link to={link} className="mt-4 block font-semibold">
                         veja mais...
                       </Link>
-                      <div className="text-center mb-8">
+                      <div className="mb-8 text-center">
                         <a
                           href="https://api.whatsapp.com/send/?phone=5551981030730&text&type=phone_number&app_absent=0"
                           target="_blank"
-                          className="bg-pink inline-block py-2 w-full lg:w-auto px-4 mt-8 rounded-xl text-white text-xl font-semibold self-center"
+                          className="mt-8 inline-block w-full self-center rounded-xl bg-pink py-2 px-4 text-xl font-semibold text-white lg:w-auto"
                         >
                           agendar
                         </a>
                       </div>
                     </div>
                     <img
-                      className="my-12 ml-20 w-2/6 rounded-tl-3xl rounded-r-3xl object-contain"
+                      className="my-12 ml-20 w-2/6 rounded-r-3xl rounded-tl-3xl object-contain"
                       src={cover}
                     />
                   </div>

@@ -23,14 +23,16 @@ export default function BlogList() {
   return (
     <div className="space-y-8">
       {services.map(({ title, body, link, cover }) => (
-        <div className="bg-green-50 p-8 flex items-start lg:flex-row flex-col">
-          <img className="w-full lg:w-40 mr-8 object-contain" src={cover} />
+        <div className="flex flex-col items-start bg-green-50 p-8 lg:flex-row">
+          <Link className="mr-8 w-full  shrink-0 lg:w-40" to={link}>
+            <img className="mr-8 w-full object-contain lg:w-40" src={cover} />
+          </Link>
           <div className="mt-8 lg:mt-0">
             <Link className="text-pink" to={link}>
-              <h2 className="font-semibold text-4xl">{title}</h2>
+              <h2 className="text-4xl font-semibold">{title}</h2>
             </Link>
-            <p className="pt-4 text-gray-600 text-justify">{body}</p>
-            <Link className="block mt-4 font-semibold" to={link}>
+            <p className="pt-4 text-justify text-gray-600">{body}</p>
+            <Link className="mt-4 block font-semibold" to={link}>
               veja mais...
             </Link>
           </div>

@@ -1,12 +1,14 @@
+import { BackButton } from "~/ui/components/back-button";
+
 export default function Sobre() {
   return (
-    <div className="flex flex-col lg:flex-row w-full lg:w-8/12 lg:mx-auto px-4 my-4 lg:my-10 text-gray-600 text-lg items-start">
+    <div className="my-4 flex w-full flex-col items-start px-4 text-lg text-gray-600 lg:mx-auto lg:my-10 lg:w-8/12 lg:flex-row">
       <img
-        className="object-contain w-full lg:w-2/6 lg:mt-16 mr-10 lg:rounded-l-3xl lg:rounded-tr-3xl"
+        className="mr-10 w-full object-contain lg:mt-16 lg:w-2/6 lg:rounded-l-3xl lg:rounded-tr-3xl"
         src="/assets/sobre.jpg"
       />
-      <div className="text-justify mt-8 lg:m-0 lg:w-4/6">
-        <h2 className="font-semibold text-pink text-center text-4xl">Sobre</h2>
+      <div className="mt-8 text-justify lg:m-0 lg:w-4/6">
+        <h2 className="text-center text-4xl font-semibold text-pink">Sobre</h2>
         <div className="text-xl">
           <p className="pt-4 indent-6">
             Olá, sou Rafaela Lanhi, fisioterapeuta e acupunturista, e minha
@@ -52,6 +54,7 @@ export default function Sobre() {
           <p className="pt-4">
             Te convido a embarcar comigo nessa jornada. Vamos?
           </p>
+          <BackButton to="/" />
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
+import { BackButton } from "~/ui/components/back-button";
+
 export default function Post() {
   return (
     <div>
-      <div className="lg:bg-green-50 lg:p-8 text-gray-600 text-justify">
-        <h2 className="font-semibold text-pink text-2xl">Ventosaterapia</h2>
+      <div className="text-justify text-gray-600 lg:bg-green-50 lg:p-8">
+        <h2 className="text-2xl font-semibold text-pink">Ventosaterapia</h2>
         <img
           className="mt-8 object-contain"
           src="/assets/blog/Ventosaterapia.jpg"
@@ -28,6 +30,7 @@ export default function Post() {
           de atividades físicas.
         </p>
         <p className="pt-4">Você já conhece essa técnica?</p>
+        <BackButton to="/blog" />
       </div>
     </div>
   );

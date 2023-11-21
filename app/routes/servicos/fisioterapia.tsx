@@ -1,10 +1,12 @@
+import { BackButton } from "~/ui/components/back-button";
+
 export default function Post() {
   return (
     <div>
-      <div className="lg:bg-green-50 lg:p-8 text-gray-600">
-        <h2 className="font-semibold text-pink text-4xl">Fisioterapia</h2>
+      <div className="text-gray-600 lg:bg-green-50 lg:p-8">
+        <h2 className="text-4xl font-semibold text-pink">Fisioterapia</h2>
         <img className="mt-8 object-contain" src="/assets/fisio-home.jpg" />
-        <p className="pt-4 indent-6  text-justify">
+        <p className="pt-4 text-justify  indent-6">
           Identificar e melhorar a qualidade de vida e o potencial movimento de
           cada pessoa. Este é um dos principais objetivos da Fisioterapia que é,
           segundo a Confederação Mundial de Fisioterapia, uma profissão da área
@@ -13,7 +15,7 @@ export default function Post() {
           vida
         </p>
 
-        <p className="pt-4 indent-6  text-justify">
+        <p className="pt-4 text-justify  indent-6">
           Como fisiterapeuta, aprendi a ser observadora de cada indivíduo e
           admiradora do potencial que cada ser humano tem de desenvolver suas
           habilidades motoras dentro de cada realidade. Sempre muito relacionada
@@ -21,7 +23,7 @@ export default function Post() {
           cada um proporciona e permite ao seu corpo movimentar e experienciar.
         </p>
 
-        <p className="pt-4 indent-6  text-justify">
+        <p className="pt-4 text-justify  indent-6">
           Sempre brinco com meus pacientes que nosso corpo se adapta muito fácil
           ao que oferecemos a ele. Nosso esqueleto é feito para atender nossas
           necessidades, funcionalidades e mobilidades, porém ele precisa de
@@ -29,7 +31,7 @@ export default function Post() {
           inércia.
         </p>
 
-        <p className="pt-4 indent-6  text-justify">
+        <p className="pt-4 text-justify  indent-6">
           Como fisioterapeuta não consigo pensar em mobilidade, em nossos corpos
           ocupando espaços, em nossas funcionalidades sendo atendidas com
           qualidade, sem pensar em um conceito de saúde que englobe todas as
@@ -39,7 +41,7 @@ export default function Post() {
           qualidade de vida e bem-estar.
         </p>
 
-        <p className="pt-4 indent-6  text-justify">
+        <p className="pt-4 text-justify  indent-6">
           Por isso sempre procuro olhar junto com meus pacientes o todo de suas
           dores, tentar entender como ela surge e porque. E ainda mais
           importante, buscar fazer com que esse quadro não se repita. Pensar
@@ -49,6 +51,7 @@ export default function Post() {
         </p>
 
         <p className="pt-4">Vamos conversar sobre o seu bem estar?</p>
+        <BackButton to="/servicos" />
       </div>
     </div>
   );

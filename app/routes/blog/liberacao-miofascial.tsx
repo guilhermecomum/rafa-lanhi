@@ -1,8 +1,10 @@
+import { BackButton } from "~/ui/components/back-button";
+
 export default function Post() {
   return (
     <div>
-      <div className="lg:bg-green-50 lg:p-8 text-gray-600 text-justify">
-        <h2 className="font-semibold text-pink text-4xl">
+      <div className="text-justify text-gray-600 lg:bg-green-50 lg:p-8">
+        <h2 className="text-4xl font-semibold text-pink">
           Liberação Miofascial
         </h2>
         <img
@@ -19,8 +21,8 @@ export default function Post() {
         <p className="pt-4">
           Seus benefícios:
           <ol
-            className="list-disc
-list-inside"
+            className="list-inside
+list-disc"
           >
             <li>Melhorar a circulação sanguínea local</li>
             <li>
@@ -44,6 +46,7 @@ list-inside"
           uma medicação e aliviar os sintomas mais desconfortáveis mais
           rapidamente.
         </p>
+        <BackButton to="/blog" />
       </div>
     </div>
   );

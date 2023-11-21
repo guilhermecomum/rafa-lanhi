@@ -3,15 +3,15 @@ import { Outlet, Link } from "@remix-run/react";
 export default function AllPosts() {
   return (
     <div className="flex flex-col justify-between">
-      <div className="flex flex-col w-full lg:w-5/12 lg:mx-auto p-4 mb-4">
-        <div className="w-full text-gray-400 mt-2 mb-8">
+      <div className="mb-4 flex w-full flex-col p-4 lg:mx-auto lg:w-5/12">
+        <div className="mt-2 mb-8 w-full text-gray-400">
           <div className="flex items-center">
             <Link className="text-pink" to="/">
-              Rafaela Lanhi
+              Home
             </Link>
-            <span className="text-xl text-green font-semibold px-2">›</span>{" "}
+            <span className="px-2 text-xl font-semibold text-green">›</span>{" "}
             <Link className="text-pink" to="/blog">
-              blog
+              Blog
             </Link>
           </div>
         </div>
